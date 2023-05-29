@@ -83,7 +83,7 @@ class Config(QMainWindow):
         box.addWidget(QLabel("IVS Analysis Center code"), 0, 0, 1, 3)
         cb = QComboBox()
         cb.addItems(self.get_analysis_codes())
-        box.addWidget(QComboBox, 0, 4)
+        box.addWidget(cb, 0, 4)
 
         groupbox.setLayout(box)
 
