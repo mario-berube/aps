@@ -1,0 +1,26 @@
+[DataCenter.cddis]
+name = "CDDIS-sftp"
+url = "gdc.cddis.eosdis.nasa.gov"
+protocol = "sftp"
+timezone = "UTC"
+script = "https://depot.cddis.eosdis.nasa.gov/CDDIS_FileUpload/"
+upload = "upload_cddis"
+root = "/pub/vlbi"
+scan = "/pub/vlbi/RECENT"
+
+[DataCenter.opar]
+name = "OPAR"
+url = "ivsopar.obspm.fr"
+protocol = "ftp"
+timezone = "UTC"
+script = "https://ivsopar.obspm.fr/upload/scripts/upload.php"
+root = "/pub/vlbi"
+scan = "/pub/vlbi/RECENT"
+
+[DataCenter.bkg]
+name = "BKG"
+url = "ivs.bkg.bund.de"
+protocol = "sftp"
+timezone = "UTC"
+root = "/pub/vlbi"
+scan = "/pub/vlbi/RECENT"
