@@ -8,18 +8,18 @@ from shutil import which
 import logging
 import logging.handlers
 
-from utils import readDICT, app
-from utils.files import chmod
-from utils.mail import send_message, build_message
-from aps import solve
-from aps.spool import read_spool
-from aps.report import STDreport, INTreport
-from aps.processing import Processing
-from aps.submit import submit_files
-from vgosdb import VGOSdb
-from vgosdb.nusolve import get_nuSolve_info
-from vgosdb.correlator import CorrelatorReport
-from schedule import get_schedule
+#from utils import readDICT, app
+#from utils.files import chmod
+#from utils.mail import send_message, build_message
+#from aps import solve
+#from aps.spool import read_spool
+#from aps.report import STDreport, INTreport
+#from aps.processing import Processing
+##from aps.submit import submit_files
+#from vgosdb import VGOSdb
+#from vgosdb.nusolve import get_nuSolve_info
+#from vgosdb.correlator import CorrelatorReport
+#from schedule import get_schedule
 
 
 logger = logging.getLogger()
