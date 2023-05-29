@@ -39,7 +39,7 @@ class Config(QMainWindow):
 
         box = QGridLayout()
         box.addWidget(QLabel("Sessions"), 0, 0)
-        box.addWidget(TextBox(), 0, 1, 1, 3)
+        box.addWidget(TextBox('', readonly=False, min_size='/level0/level1/level2'), 0, 1, 1, 3)
         find_file = QPushButton('Find ...')
         find_file.clicked.connect(self.set_path)
         box.addWidget(find_file, 1, 6)
