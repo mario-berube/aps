@@ -15,6 +15,7 @@ import sys
 class Config(QMainWindow):
 
     def __init__(self):
+        self.path = dict(control='', session='', vgosdb='')
 
         self._QApplication = QApplication(sys.argv)
 
@@ -32,17 +33,25 @@ class Config(QMainWindow):
         self.setCentralWidget(widget)
         self.show()
 
+    def add_find_file(self, box, row, title, is_dir):
+        box.addWidget(QLabel(title), row, 0, 1, 2)
+        text = TextBox('', readonly=False, min_size='/level0/level1/level2')
+        box.addWidget(text, row, 2, 1, 3)
+        find_file = QPushButton('Find ...')
+        find_file.clicked.connect(self.set_path)
+        box.addWidget(find_file, row, 6)
+        return text
+
     # Make the box for the report buttons
     def make_folder_box(self):
         groupbox = QGroupBox("Folders")
         groupbox.setStyleSheet("QGroupBox { font-weight: bold; } ")
 
         box = QGridLayout()
-        box.addWidget(QLabel("Sessions"), 0, 0)
-        box.addWidget(TextBox('', readonly=False, min_size='/level0/level1/level2'), 0, 1, 1, 3)
-        find_file = QPushButton('Find ...')
-        find_file.clicked.connect(self.set_path)
-        box.addWidget(find_file, 1, 6)
+        self.path['control'] = self.add_find_file(box, 0, 'Control Folder', is_dir=True)
+        self.path['session'] = self.add_find_file(box, 1, 'Session Folder', is_dir=True)
+        self.path['session'] = self.add_find_file(box, 1, 'vgosDB Folder', is_dir=True)
+
         groupbox.setLayout(box)
 
         return groupbox
