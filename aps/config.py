@@ -43,8 +43,9 @@ class Config(QMainWindow):
         find_file = QPushButton('Find ...')
         find_file.clicked.connect(self.set_path)
         box.addWidget(find_file, 1, 6)
+        groupbox.setLayout(box)
 
-        return groupbox, box
+        return groupbox
 
     def set_path(self):
         print('Hello')
