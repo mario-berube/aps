@@ -24,11 +24,6 @@ class Config(QMainWindow):
         self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint)
 
         # Initialize viewers for specific files and comment editors
-        self.comments = self.make_comment_editors()
-        self.viewers = self.make_viewers()
-        # Make status bar
-        self.status_bar = QStatusBar()
-        self.setStatusBar(self.status_bar)
         # Make session, report and action boxes
         widget = QWidget()
         layout = QGridLayout()
