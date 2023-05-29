@@ -2,7 +2,7 @@
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QWidget, QStyle, QFileDialog
 from PyQt5.QtWidgets import QHBoxLayout, QLayout, QGridLayout, QStatusBar, QGroupBox
-from PyQt5.QtWidgets import QPlainTextEdit, QLabel, QPushButton, QRadioButton, QCheckBox, QLineEdit
+from PyQt5.QtWidgets import QPlainTextEdit, QLabel, QPushButton, QComboBox
 
 from PyQt5.QtCore import QTimer, Qt, QDir
 from PyQt5.QtGui import QFont
@@ -29,6 +29,7 @@ class Config(QMainWindow):
         widget = QWidget()
         layout = QGridLayout()
         layout.addWidget(self.make_folder_box())
+        layout.addWidget(self.make_analysis_box())
         widget.setLayout(layout)
         self.setCentralWidget(widget)
         self.show()
@@ -44,13 +45,45 @@ class Config(QMainWindow):
 
     # Make the box for the report buttons
     def make_folder_box(self):
-        groupbox = QGroupBox("Folders")
+        groupbox = QGroupBox("Data Folders")
         groupbox.setStyleSheet("QGroupBox { font-weight: bold; } ")
 
         box = QGridLayout()
         self.path['control'] = self.add_find_file(box, 0, 'Control Folder', is_dir=True)
         self.path['session'] = self.add_find_file(box, 1, 'Session Folder', is_dir=True)
-        self.path['session'] = self.add_find_file(box, 1, 'vgosDB Folder', is_dir=True)
+        self.path['session'] = self.add_find_file(box, 2, 'vgosDB Folder', is_dir=True)
+
+        groupbox.setLayout(box)
+
+        return groupbox
+
+    def get_analysis_codes(self):
+        path = '/sgpvlbi/sessions/control/master-format.txt'
+        codes = []
+
+        category = False
+        try:
+            with open(path, 'r') as file:
+                for line in file.readlines():
+                    if line.strip() == 'SUBM CODES':
+                        category = True
+                    elif line.startswith('end'):
+                        category = False
+                    elif category:
+                        codes.append(line.split()[0].strip())
+        except:
+            pass
+        return codes
+
+    def make_analysis_box(self):
+        groupbox = QGroupBox("Analysis information")
+        groupbox.setStyleSheet("QGroupBox { font-weight: bold; } ")
+
+        box = QGridLayout()
+        box.addWidget(QLabel("IVS Analysis Center code"), 0, 0, 1, 3)
+        cb = QComboBox()
+        cb.addItems(self.get_analysis_codes())
+        box.addWidget(QComboBox, 0, 4)
 
         groupbox.setLayout(box)
 
