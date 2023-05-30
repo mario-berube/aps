@@ -3,7 +3,7 @@ import os.path
 from pathlib import Path
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QWidget, QStyle, QFileDialog
-from PyQt5.QtWidgets import QHBoxLayout, QLayout, QGridLayout, QStatusBar, QGroupBox
+from PyQt5.QtWidgets import QHBoxLayout, QLayout, QGridLayout, QStatusBar, QGroupBox, QVBoxLayout
 from PyQt5.QtWidgets import QPlainTextEdit, QLabel, QPushButton, QComboBox
 
 from PyQt5.QtCore import QTimer, Qt, QDir
@@ -30,10 +30,10 @@ class Config(QMainWindow):
         # Initialize viewers for specific files and comment editors
         # Make session, report and action boxes
         widget = QWidget()
-        layout = QGridLayout()
+        layout = QVBoxLayout()
         layout.addWidget(self.make_folder_box())
         layout.addWidget(self.make_analysis_box())
-        layout.addWidget(QPushButton('Save as'), alignment=Qt.AlignRight)
+        layout.addWidget(QPushButton('Save as'))  #, alignment=Qt.AlignRight)
         widget.setLayout(layout)
         self.setCentralWidget(widget)
         self.show()
