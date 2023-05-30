@@ -64,8 +64,8 @@ class Config(QMainWindow):
 
         box = QGridLayout()
         self.path['control'] = self.add_find_folder(box, 0, 'Control Folder', self.get_analysis_codes)
-        self.path['session'] = self.add_find_file(box, 1, 'Session Folder')
-        self.path['session'] = self.add_find_file(box, 2, 'vgosDB Folder')
+        self.path['session'] = self.add_find_folder(box, 1, 'Session Folder')
+        self.path['session'] = self.add_find_folder(box, 2, 'vgosDB Folder')
 
         groupbox.setLayout(box)
         return groupbox
@@ -104,6 +104,7 @@ class Config(QMainWindow):
         submit = QComboBox(self)
         submit.addItems(["None", 'BKG', "CDDIS", "OPAR"])
         box.addWidget(submit, 4, 4)
+        self.path['failed_submit'] = self.add_find_folder(box, 5, 'Failed Submit Folder')
 
         groupbox.setLayout(box)
 
