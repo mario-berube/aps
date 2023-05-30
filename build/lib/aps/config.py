@@ -93,17 +93,17 @@ class Config(QMainWindow):
         groupbox.setStyleSheet("QGroupBox { font-weight: bold; } ")
 
         box = QGridLayout()
-        box.addWidget(QLabel("IVS Analysis Center code"), 0, 0)
-        box.addWidget(self.analysis_center, 0, 1)
+        box.addWidget(QLabel("IVS Analysis Center code"), 0, 0, 1, 2)
+        box.addWidget(self.analysis_center, 0, 2)
 
         opa_filters = 'OPA files (*.lcl);;Text files (*.txt);;Any files (*.*)'
         self.add_find_file(box, 1, 'OPA lcl file for Standard 24H session', opa_filters)
         self.add_find_file(box, 2, 'OPA lcl file for Intensive session', opa_filters)
         self.add_find_file(box, 3, 'Leap Seconds (ut1ls.dat)', 'DAT files (*.dat);;Any files (*.*)')
-        box.addWidget(QLabel("IVS Data Centers for submission"), 4, 0)
+        box.addWidget(QLabel("IVS Data Centers for submission"), 4, 0, 1, 2)
         submit = QComboBox(self)
         submit.addItems(["None", 'BKG', "CDDIS", "OPAR"])
-        box.addWidget(submit, 4, 1)
+        box.addWidget(submit, 4, 2)
         self.path['failed_submit'] = self.add_find_folder(box, 5, 'Failed Submit Folder')
 
         groupbox.setLayout(box)
