@@ -40,7 +40,7 @@ class Config(QMainWindow):
         text.setAlignment(Qt.AlignLeft)
         box.addWidget(text, row, 2, 1, 3)
         find_file = QPushButton('Find ...')
-        find_file.clicked.connect(self.set_path)
+        find_file.clicked.connect(lambda x: self.set_path(is_dir, text))
         box.addWidget(find_file, row, 6)
         return text
 
@@ -93,8 +93,8 @@ class Config(QMainWindow):
 
         return groupbox
 
-    def set_path(self):
-        print('Hello')
+    def set_path(self, is_dir, text_box):
+        text_box.setText(f'Hello {is_dir}')
 
     def exec(self):
         sys.exit(self._QApplication.exec_())
