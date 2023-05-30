@@ -31,9 +31,9 @@ class Config(QMainWindow):
         # Make session, report and action boxes
         widget = QWidget()
         layout = QGridLayout()
-        layout.addWidget(0, 0, 1, 6, self.make_folder_box())
-        layout.addWidget(1, 0, 1, 6, self.make_analysis_box())
-        layout.addWidget(2, 6, QPushButton('Save as'))  #, alignment=Qt.AlignRight)
+        layout.addWidget(self.make_folder_box(), 0, 0, 1, 6)
+        layout.addWidget(self.make_analysis_box(), 1, 0, 1, 6)
+        layout.addWidget(QPushButton('Save as'), 2, 6)
         widget.setLayout(layout)
         self.setCentralWidget(widget)
         self.show()
