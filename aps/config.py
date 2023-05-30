@@ -96,7 +96,7 @@ class Config(QMainWindow):
     def set_path(self, is_dir, text_box, title):
         dialog = QFileDialog
         if is_dir:
-            if path := dialog.getExistingDirectory(f'Select {title} directory'):
+            if path := dialog.getExistingDirectory(self, f'Select {title} directory'):
                 text_box.setText(path)
         else:
             text_box.setText(f'Hello {is_dir}')
