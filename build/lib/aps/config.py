@@ -71,7 +71,7 @@ class Config(QMainWindow):
         return groupbox
 
     def get_analysis_codes(self):
-        if not (path := Path(self.path['control'].text(), 'master-format.txt')).exists():
+        if not (path := Path(self.path['control'].text(), 'master-format.tt')).exists():
             ErrorMessage('master-format', f'master-format.txt file is not in {self.path["control"].text()}')
             return
 
@@ -79,13 +79,12 @@ class Config(QMainWindow):
             found = False
             with open(path, 'r') as file:
                 for line in file.readlines():
-                    print(line)
                     if line.strip() == 'SUBM CODES':
                         found = True
                     elif line.startswith('end'):
                         found = False
                     elif found and (code := line.split()[0].strip()):
-                        print(code, self.analysis_center.find(code))
+                        print(code, self.analysis_center.findText(code))
                         self.analysis_center.addItem(code)
         except Exception as exc:
             print('Error', str(exc))
