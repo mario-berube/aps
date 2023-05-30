@@ -55,7 +55,6 @@ class Config(QMainWindow):
         self.path['session'] = self.add_find_file(box, 2, 'vgosDB Folder', is_dir=True)
 
         groupbox.setLayout(box)
-
         return groupbox
 
     def get_analysis_codes(self):

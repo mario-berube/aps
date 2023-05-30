@@ -55,7 +55,6 @@ class Config(QMainWindow):
         self.path['session'] = self.add_find_file(box, 2, 'vgosDB Folder', is_dir=True)
 
         groupbox.setLayout(box)
-
         return groupbox
 
     def get_analysis_codes(self):
@@ -96,7 +95,7 @@ class Config(QMainWindow):
     def set_path(self, is_dir, text_box, title):
         dialog = QFileDialog
         if is_dir:
-            if path := dialog.getExistingDirectory(f'Select {title} directory'):
+            if path := dialog.getExistingDirectory(self, f'Select {title} directory'):
                 text_box.setText(path)
         else:
             text_box.setText(f'Hello {is_dir}')
