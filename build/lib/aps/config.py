@@ -98,6 +98,7 @@ class Config(QMainWindow):
                 text_box.setText(path)
         else:
             if path := QFileDialog.getOpenFileName(self, f'Select {title}'):
+                print(path)
                 text_box.setText(path)
 
     def exec(self):
