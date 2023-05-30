@@ -37,7 +37,7 @@ class Config(QMainWindow):
     def add_find_file(self, box, row, title, is_dir):
         box.addWidget(QLabel(title), row, 0, 1, 2)
         text = TextBox('', readonly=False, min_size='/level0/level1/level2')
-        box.addWidget(text, row, 2, 1, 3, stretch=1)
+        box.addWidget(text, row, 2, 1, 3)
         find_file = QPushButton('Find ...')
         find_file.clicked.connect(self.set_path)
         box.addWidget(find_file, row, 6)
