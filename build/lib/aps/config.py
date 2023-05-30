@@ -30,10 +30,10 @@ class Config(QMainWindow):
         # Initialize viewers for specific files and comment editors
         # Make session, report and action boxes
         widget = QWidget()
-        layout = QVBoxLayout()
-        layout.addWidget(self.make_folder_box())
-        layout.addWidget(self.make_analysis_box())
-        layout.addWidget(QPushButton('Save as'))  #, alignment=Qt.AlignRight)
+        layout = QGridLayout()
+        layout.addWidget(0, 0, 1, 6, self.make_folder_box())
+        layout.addWidget(1, 0, 1, 6, self.make_analysis_box())
+        layout.addWidget(2, 6, QPushButton('Save as'))  #, alignment=Qt.AlignRight)
         widget.setLayout(layout)
         self.setCentralWidget(widget)
         self.show()
