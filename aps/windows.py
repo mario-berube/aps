@@ -10,7 +10,7 @@ class TextBox(QLineEdit):
         self.setAlignment(QtCore.Qt.AlignCenter)
         fm = self.fontMetrics()
         w = max(fm.width(text), fm.width(min_size)) + 15
-        self.setFixedWidth(w)
+        self.setMinimumWidth(w)
         self.setText(text)
 
 
