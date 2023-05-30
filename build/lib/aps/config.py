@@ -1,4 +1,6 @@
 # file_browser_ui.py
+import os.path
+from pathlib import Path
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox, QWidget, QStyle, QFileDialog
 from PyQt5.QtWidgets import QHBoxLayout, QLayout, QGridLayout, QStatusBar, QGroupBox
@@ -7,7 +9,7 @@ from PyQt5.QtWidgets import QPlainTextEdit, QLabel, QPushButton, QComboBox
 from PyQt5.QtCore import QTimer, Qt, QDir
 from PyQt5.QtGui import QFont
 
-from aps.windows import TextBox
+from aps.windows import TextBox, ErrorMessage
 
 import sys
 
@@ -23,6 +25,7 @@ class Config(QMainWindow):
 
         self.setWindowTitle("APS configuration helper")
         self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint)
+        self.analysis_center = QComboBox(self)
 
         # Initialize viewers for specific files and comment editors
         # Make session, report and action boxes
@@ -34,13 +37,23 @@ class Config(QMainWindow):
         self.setCentralWidget(widget)
         self.show()
 
-    def add_find_file(self, box, row, title, is_dir):
+    def add_find_folder(self, box, row, title, action=None):
         box.addWidget(QLabel(title), row, 0, 1, 2)
         text = TextBox('', readonly=False, min_size='/level0/level1/level2/level3')
         text.setAlignment(Qt.AlignLeft)
         box.addWidget(text, row, 2, 1, 3)
         find_file = QPushButton('Find ...')
-        find_file.clicked.connect(lambda x: self.set_path(is_dir, text, title))
+        find_file.clicked.connect(lambda x: self.get_folder(text, title, action))
+        box.addWidget(find_file, row, 6)
+        return text
+
+    def add_find_file(self, box, row, title, filters):
+        box.addWidget(QLabel(title), row, 0, 1, 2)
+        text = TextBox('', readonly=False, min_size='/level0/level1/level2/level3')
+        text.setAlignment(Qt.AlignLeft)
+        box.addWidget(text, row, 2, 1, 3)
+        find_file = QPushButton('Find ...')
+        find_file.clicked.connect(lambda x: self.set_path(text, title, filters))
         box.addWidget(find_file, row, 6)
         return text
 
@@ -50,30 +63,30 @@ class Config(QMainWindow):
         groupbox.setStyleSheet("QGroupBox { font-weight: bold; } ")
 
         box = QGridLayout()
-        self.path['control'] = self.add_find_file(box, 0, 'Control Folder', is_dir=True)
-        self.path['session'] = self.add_find_file(box, 1, 'Session Folder', is_dir=True)
-        self.path['session'] = self.add_find_file(box, 2, 'vgosDB Folder', is_dir=True)
+        self.path['control'] = self.add_find_folder(box, 0, 'Control Folder', self.get_analysis_codes)
+        self.path['session'] = self.add_find_file(box, 1, 'Session Folder')
+        self.path['session'] = self.add_find_file(box, 2, 'vgosDB Folder')
 
         groupbox.setLayout(box)
         return groupbox
 
     def get_analysis_codes(self):
-        path = '/sgpvlbi/sessions/control/master-format.txt'
-        codes = []
+        if not (path := Path(self.path['control'].text(), 'master-format.txt')).exists():
+            ErrorMessage('master-format', f'master-format.txt file is not in {self.path["control"].text()}')
+            return
 
-        category = False
+        found = False
         try:
             with open(path, 'r') as file:
                 for line in file.readlines():
                     if line.strip() == 'SUBM CODES':
-                        category = True
+                        found = True
                     elif line.startswith('end'):
-                        category = False
-                    elif category:
-                        codes.append(line.split()[0].strip())
+                        found = False
+                    elif found and (code := line.split()[0].strip()) and not self.analysis_center.find(code):
+                        self.analysis_center.addItem(code)
         except:
             pass
-        return codes
 
     def make_analysis_box(self):
         groupbox = QGroupBox("Analysis information")
@@ -81,26 +94,33 @@ class Config(QMainWindow):
 
         box = QGridLayout()
         box.addWidget(QLabel("IVS Analysis Center code"), 0, 0, 1, 3)
-        cb = QComboBox()
-        cb.addItems(self.get_analysis_codes())
-        box.addWidget(cb, 0, 4)
+        box.addWidget(self.analysis_center, 0, 4)
 
-        self.add_find_file(box, 1, 'OPA lcl file for Standard 24H session', is_dir=False)
-        self.add_find_file(box, 2, 'OPA lcl file for Intensive session', is_dir=False)
+        opa_filters = 'OPA files (*.lcl);;Text files (*.txt);;Any files (*.*)'
+        self.add_find_file(box, 1, 'OPA lcl file for Standard 24H session', opa_filters)
+        self.add_find_file(box, 2, 'OPA lcl file for Intensive session', opa_filters)
+        self.add_find_file(box, 3, 'Leap Seconds (ut1ls.dat)', 'DAT files (*.dat);;Any files (*.*)')
+        box.addWidget(QLabel("IVS Data Centers for submission"), 4, 0, 1, 3)
+        submit = QComboBox(self)
+        submit.addItems(["None", 'BKG', "CDDIS", "OPAR"])
+        box.addWidget(submit, 4, 4)
 
         groupbox.setLayout(box)
 
         return groupbox
 
-    def set_path(self, is_dir, text_box, title):
-        if is_dir:
-            if path := QFileDialog.getExistingDirectory(self, f'Select {title}'):
-                text_box.setText(path)
-        else:
-            path, _ = QFileDialog.getOpenFileName(self, f'Select {title}', '.',
-                                                  'OPA files (*.lcl);;Text files (*.txt);;Any files (*.*)')
-            if path:
-                text_box.setText(path)
+    def get_folder(self, text_box, title, action=None):
+        if path := QFileDialog.getExistingDirectory(self, f'Select {title}'):
+            text_box.setText(path)
+            if action:
+                action()
+
+    def get_filepath(self, text_box, title, filters):
+        path, _ = QFileDialog.getOpenFileName(self, f'Select {title}', '.', filters)
+
+        #                                      'OPA files (*.lcl);;Text files (*.txt);;Any files (*.*)')
+        if path:
+            text_box.setText(path)
 
     def exec(self):
         sys.exit(self._QApplication.exec_())
