@@ -81,10 +81,9 @@ class Config(QMainWindow):
                 for line in file.readlines():
                     if line.strip() == 'SUBM CODES':
                         found = True
-                    elif line.startswith('end'):
+                    elif line.strip() == 'end':
                         found = False
-                    elif found and (code := line.split()[0].strip()):
-                        print(code, self.analysis_center.findText(code))
+                    elif found and (code := line.split()[0].strip()) and self.analysis_center.findText(code) < 0:
                         self.analysis_center.addItem(code)
         except Exception as exc:
             print('Error', str(exc))
@@ -129,7 +128,9 @@ class Config(QMainWindow):
 
 
 def main():
-    config = Config()  # <<-- Create an instance
+    os.environ['XDG_RUN_TIME_DIR'] = '/tmp'
+    os.environ['QT_LOGGING_RULES'] = '*.debug=false;qt.qpa.*=false'
+    config = Config()
     config.exec()
 
 
