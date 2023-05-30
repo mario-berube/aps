@@ -33,6 +33,7 @@ class Config(QMainWindow):
         layout = QGridLayout()
         layout.addWidget(self.make_folder_box())
         layout.addWidget(self.make_analysis_box())
+        layout.addWidget(QPushButton('Save as'))
         widget.setLayout(layout)
         self.setCentralWidget(widget)
         self.show()
@@ -63,9 +64,9 @@ class Config(QMainWindow):
         groupbox.setStyleSheet("QGroupBox { font-weight: bold; } ")
 
         box = QGridLayout()
-        self.path['control'] = self.add_find_folder(box, 0, 'Control Folder', self.get_analysis_codes)
-        self.path['session'] = self.add_find_folder(box, 1, 'Session Folder')
-        self.path['session'] = self.add_find_folder(box, 2, 'vgosDB Folder')
+        self.path['control'] = self.add_find_folder(box, 0, 'Master files Folder', self.get_analysis_codes)
+        self.path['session'] = self.add_find_folder(box, 1, 'Session files Folder')
+        self.path['session'] = self.add_find_folder(box, 2, 'vgosDB files Folder')
 
         groupbox.setLayout(box)
         return groupbox
