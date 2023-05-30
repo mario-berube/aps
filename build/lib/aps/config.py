@@ -33,7 +33,7 @@ class Config(QMainWindow):
         layout = QGridLayout()
         layout.addWidget(self.make_folder_box())
         layout.addWidget(self.make_analysis_box())
-        layout.addWidget(QPushButton('Save as'))
+        layout.addWidget(QPushButton('Save as'), alignment=Qt.AlignRight)
         widget.setLayout(layout)
         self.setCentralWidget(widget)
         self.show()
