@@ -97,12 +97,14 @@ class Config(QMainWindow):
             if path := QFileDialog.getExistingDirectory(self, f'Select {title}'):
                 text_box.setText(path)
         else:
-            if path := QFileDialog.getOpenFileName(self, f'Select {title}'):
-                print(path)
+            path, _ = QFileDialog.getOpenFileName(self, f'Select {title}', '.',
+                                                  'OPA files (*.lcl);;Text files (*.txt);;Any files (*.*)')
+            if path:
                 text_box.setText(path)
 
     def exec(self):
         sys.exit(self._QApplication.exec_())
+
 
 def main():
     config = Config()  # <<-- Create an instance
