@@ -77,13 +77,15 @@ class Config(QMainWindow):
 
         found = False
         try:
+            print(path)
             with open(path, 'r') as file:
                 for line in file.readlines():
                     if line.strip() == 'SUBM CODES':
                         found = True
                     elif line.startswith('end'):
                         found = False
-                    elif found and (code := line.split()[0].strip()) and not self.analysis_center.find(code):
+                    elif found and (code := line.split()[0].strip()):
+                        print(code, self.analysis_center.find(code))
                         self.analysis_center.addItem(code)
         except:
             pass
@@ -93,17 +95,17 @@ class Config(QMainWindow):
         groupbox.setStyleSheet("QGroupBox { font-weight: bold; } ")
 
         box = QGridLayout()
-        box.addWidget(QLabel("IVS Analysis Center code"), 0, 0, 1, 3)
-        box.addWidget(self.analysis_center, 0, 4)
+        box.addWidget(QLabel("IVS Analysis Center code"), 0, 0)
+        box.addWidget(self.analysis_center, 0, 1)
 
         opa_filters = 'OPA files (*.lcl);;Text files (*.txt);;Any files (*.*)'
         self.add_find_file(box, 1, 'OPA lcl file for Standard 24H session', opa_filters)
         self.add_find_file(box, 2, 'OPA lcl file for Intensive session', opa_filters)
         self.add_find_file(box, 3, 'Leap Seconds (ut1ls.dat)', 'DAT files (*.dat);;Any files (*.*)')
-        box.addWidget(QLabel("IVS Data Centers for submission"), 4, 0, 1, 3)
+        box.addWidget(QLabel("IVS Data Centers for submission"), 4, 0)
         submit = QComboBox(self)
         submit.addItems(["None", 'BKG', "CDDIS", "OPAR"])
-        box.addWidget(submit, 4, 4)
+        box.addWidget(submit, 4, 1)
         self.path['failed_submit'] = self.add_find_folder(box, 5, 'Failed Submit Folder')
 
         groupbox.setLayout(box)
