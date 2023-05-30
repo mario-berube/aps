@@ -71,7 +71,7 @@ class Config(QMainWindow):
         return groupbox
 
     def get_analysis_codes(self):
-        if not (path := Path(self.path['control'].text(), 'master-format.tt')).exists():
+        if not (path := Path(self.path['control'].text(), 'master-format.txt')).exists():
             ErrorMessage('master-format', f'master-format.txt file is not in {self.path["control"].text()}')
             return
 
