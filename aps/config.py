@@ -93,12 +93,12 @@ class Config(QMainWindow):
         return groupbox
 
     def set_path(self, is_dir, text_box, title):
-        dialog = QFileDialog
         if is_dir:
-            if path := dialog.getExistingDirectory(self, f'Select {title} directory'):
+            if path := QFileDialog.getExistingDirectory(self, f'Select {title}'):
                 text_box.setText(path)
         else:
-            text_box.setText(f'Hello {is_dir}')
+            if path := QFileDialog.getOpenFileName(self, f'Select {title}'):
+                text_box.setText(path)
 
     def exec(self):
         sys.exit(self._QApplication.exec_())
