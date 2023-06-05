@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='APS',
-    packages=['aps', 'aps.vgosdb', 'aps.schedule'],
+    packages=['aps', 'aps.vgosdb', 'aps.schedule', 'aps.utils', 'aps.files'],
     description='Automated Post Solve (APS)',
     version='2.0',
     url='http://github.com/',
