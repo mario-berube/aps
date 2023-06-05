@@ -1,4 +1,3 @@
-# file_browser_ui.py
 import os.path
 from pathlib import Path
 
@@ -7,7 +6,6 @@ from PyQt5.QtWidgets import QHBoxLayout, QLayout, QGridLayout, QStatusBar, QGrou
 from PyQt5.QtWidgets import QPlainTextEdit, QLabel, QPushButton, QComboBox
 
 from PyQt5.QtCore import QTimer, Qt, QDir
-from PyQt5.QtGui import QFont
 
 from aps.windows import TextBox, ErrorMessage
 
@@ -33,7 +31,9 @@ class Config(QMainWindow):
         layout = QGridLayout()
         layout.addWidget(self.make_folder_box(), 0, 0, 1, 6)
         layout.addWidget(self.make_analysis_box(), 1, 0, 1, 6)
-        layout.addWidget(QPushButton('Save as'), 2, 6)
+        save_as = QPushButton('Save as')
+        save_as.clicked.connect(self.save)
+        layout.addWidget(save_as, 2, 5)
         widget.setLayout(layout)
         self.setCentralWidget(widget)
         self.show()
@@ -123,6 +123,12 @@ class Config(QMainWindow):
         #                                      'OPA files (*.lcl);;Text files (*.txt);;Any files (*.*)')
         if path:
             text_box.setText(path)
+
+    def save(self):
+        file, check = QFileDialog.getSaveFileName(self, "Get APS Config file name",
+                                                  "aps.conf", "Config files (*.conf);;Text Files (*.txt);;All Files (*)")
+        print(check)
+        print(file)
 
     def exec(self):
         sys.exit(self._QApplication.exec_())

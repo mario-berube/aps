@@ -24,7 +24,7 @@ class EOPM(EOP):
         self.name2code = app.get_dbase().get_station_name_dict()
 
         options = app.Applications.APS.get('EOPM', dict(sites='/sgpvlbi/apriori/models/2023a_mod.sit',
-                                                             min_dist=5000))
+                                                        min_dist=5000000))
         with open(options['sites']) as sit:
             self.sites = {line[:12].strip(): [(lambda x: float(x))(x) for x in line[12:].split()[:2]] for line in
                           sit.readlines() if not line.startswith('$')}

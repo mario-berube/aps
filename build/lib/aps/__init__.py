@@ -8,18 +8,18 @@ from shutil import which
 import logging
 import logging.handlers
 
-#from utils import readDICT, app
-#from utils.files import chmod
-#from utils.mail import send_message, build_message
-#from aps import solve
-#from aps.spool import read_spool
-#from aps.report import STDreport, INTreport
-#from aps.processing import Processing
-##from aps.submit import submit_files
-#from vgosdb import VGOSdb
-#from vgosdb.nusolve import get_nuSolve_info
-#from vgosdb.correlator import CorrelatorReport
-#from schedule import get_schedule
+from utils import readDICT, app
+from utils.files import chmod
+from utils.mail import send_message, build_message
+from aps import solve
+from aps.spool import read_spool
+from aps.report import STDreport, INTreport
+from aps.processing import Processing
+from aps.submit import submit_files
+from vgosdb import VGOSdb
+from vgosdb.nusolve import get_nuSolve_info
+from vgosdb.correlator import CorrelatorReport
+from schedule import get_schedule
 
 
 logger = logging.getLogger()
@@ -44,7 +44,7 @@ class APS:
         # Read agency code from vgosDb control file using information in VGOSDB control file
         agency_info = app.load_control_file(name=app.ControlFiles.VGOSdb)[-1]['Agency']
         key_id, key_ac = (agency_info['keys'])
-        self.agency = readDICT(os.path.expanduser(agency_info['file']))[key_id][key_ac]
+        self.agency = 'GSFC'  # readDICT(os.path.expanduser(agency_info['file']))[key_id][key_ac]
         # Get working directory
         self.working_dir = os.getcwd()
         self.initials = ''
@@ -67,7 +67,7 @@ class APS:
         self.analysis_center = self.session.analysis_center.upper()
         self.ses_id = self.session.code.lower()
         self.db_name = self.session.db_name
-        # Get OPA files file from arguments or used default.
+        # Get OPA config file from arguments or used default.
         if hasattr(app.args, 'opa_config') and os.path.exists(app.args.opa_config):
             self.opa_lcl = app.args.opa_config
         else:  # Use default control file for session type
@@ -348,13 +348,14 @@ class APS:
 
         info = app.Applications.APS['Mail']
         user = os.environ['SUDO_USER'] if 'SUDO_USER' in os.environ else os.environ['USER']
+        reply = info['reply'].get(self.session.type, '') if user == 'oper' else ''
         if user not in info:
             return f'No email address defined for {user}'
         logger.info('email analysis report')
         ac = 'IVS' if self.processing.check_agency() else 'NASA'
         title = f'{self.session.code.lower()} ({self.vgosdb.name.upper()}) {ac} Analysis Report'
 
-        msg = build_message(info[user], info['recipients'], title, text=open(path, 'r').read())
+        msg = build_message(info[user], info['recipients'], title, reply=reply, text=open(path, 'r').read())
         return send_message(info['server'], msg)
 
     # Use generic function to execute a specific process using its name
@@ -424,3 +425,4 @@ def get_aps_path():
                     os.environ['__APS_PATH__'] = str(app_path)
                     return str(app_path)
     return None
+

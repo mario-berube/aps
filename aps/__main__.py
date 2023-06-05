@@ -507,7 +507,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser( description='Logger for ADAP software.' )
 
     parser.add_argument('-c', '--files', help='files file', required=True)
-    parser.add_argument('-d', '--db', help='database name', default='ivscc', required=False)
     parser.add_argument('-opa', '--opa_config', help='opa lcl file ', default='', required=False)
     parser.add_argument('-s', '--status', help='', action='store_true', required=False)
     parser.add_argument('-r', '--report', help='', action='store_true', required=False)
