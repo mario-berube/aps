@@ -36,6 +36,10 @@ aps/windows.py
 aps/schedule/__init__.py
 aps/schedule/skd.py
 aps/schedule/vex.py
+aps/utils/__init__.py
+aps/utils/app.py
+aps/utils/files.py
+aps/utils/utctime.py
 aps/vgosdb/__init__.py
 aps/vgosdb/__main__.py
 aps/vgosdb/compress.py
