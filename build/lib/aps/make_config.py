@@ -23,7 +23,7 @@ class Config(QMainWindow):
                             "no pcal", "low pcal", "low ampli", "removed channel",
                             "non detection", "warm receiver", "rfi channel", "rfi band", "channel flagged",
                             "no signal", "fringe fitting",
-                            "fringe amplitude"],
+                            "fringe amplitude", "please download", "ftp:"],
                   'exact': ["g code", "s-band", "x-band", "transfer rate:"]
                   }
 
