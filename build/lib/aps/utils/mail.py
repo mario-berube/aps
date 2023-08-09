@@ -16,7 +16,6 @@ import mimetypes
 
 def send_gmail(credentials, msg):
     creds = Storage(credentials).get()
-    if creds.
     service = build('gmail', 'v1', http=creds.authorize(Http()), cache_discovery=False) if creds else None
     try:
         body = {'raw': base64.urlsafe_b64encode(msg.as_bytes()).decode()}
