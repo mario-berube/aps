@@ -1,7 +1,7 @@
 import os
 import re
 
-from utils.files import TEXTfile
+from aps.utils.files import TEXTfile
 
 # Regex to extract information in nuSolve report
 get_analyst = re.compile(r'Analyzed by (?P<analyst>.*) \(hereafter (?P<initials>\w{2})\) at (?P<agency>|.*)\. Contact info: <(?P<email>.*)>').match

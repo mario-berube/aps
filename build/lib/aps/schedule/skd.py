@@ -1,10 +1,11 @@
 import os, re
 from collections import OrderedDict
 import string
-from utils.utctime import utc
-from utils.files import TEXTfile
 from operator import itemgetter
 from datetime import timedelta
+
+from aps.utils.utctime import utc
+from aps.utils.files import TEXTfile
 
 
 class SKD(TEXTfile):

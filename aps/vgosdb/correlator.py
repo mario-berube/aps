@@ -5,7 +5,7 @@ from pathlib import Path
 from collections import defaultdict
 from datetime import datetime
 
-from utils import app
+from aps.utils import app
 
 
 # Read correlator report, Report is stored as text.
@@ -15,10 +15,11 @@ class CorrelatorReport:
         self.ses_id, self.db_name = 'unknown', 'unknown'
         self.is_template, self.text = False, ''
         self.format_version = None
-        self._names = self._name_dict = None
+        dbase = app.get_dbase()
+        self._names, self._name_dict = dbase.get_station_names(), dbase.get_station_name_dict()
 
-        rejected = app.Applications.APS['CorrNotes']
-        self.REJWords, self.REJExact = rejected['words'], rejected['exact']
+        rejected = app.CorrNotes
+        self.REJWords, self.REJExact = rejected.words, rejected.exact
         self.old_names = {'NY ALESUND': 'NYALESUND', 'FORTALEZA': 'FORTLEZA', 'ALGONQUIN': 'ALGOPARK'}
 
     def __enter__(self):
@@ -77,13 +78,9 @@ class CorrelatorReport:
         return True, 'updated'
 
     def get_names(self):
-        if not self._names:
-            self._names = app.get_dbase().get_station_names()
         return self._names
 
     def get_name_dict(self):
-        if not self._name_dict:
-            self._name_dict = app.get_dbase().get_station_name_dict()
         return self._name_dict
 
     def decode_old_format(self):
@@ -204,7 +201,7 @@ class CorrelatorReport:
             if not self.text and not self.read():
                 return {}
 
-            rejected = app.Applications.APS['CorrNotes']
+            rejected = app.CorrNotes
             rej_words, rej_exact = rejected['words'], rejected['exact']
             codes = {code: f'{code:<8s}({sta_id.capitalize()})' for code, sta_id in self.get_name_dict().items()}
 
@@ -226,7 +223,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser( description='correlator' )
 
-    parser.add_argument('-c', '--files', help='files file', required=True)
+    parser.add_argument('-c', '--config', help='config file', required=True)
     parser.add_argument('-d', '--db', help='database name', default='ivscc', required=False)
     parser.add_argument('path')
     args = app.init(parser.parse_args())

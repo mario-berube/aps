@@ -1,0 +1,837 @@
+******************************************************************
+*                                                                 *
+*         ac-codes.txt      Analysis Center codes                 *
+*                                                                 *
+*******************************************************************
+*
+* This file is ac-codes.txt in https://cddis.gsfc.nasa.gov/archive/vlbi/ivscontrol.
+* Copies are available at the other two IVS data centers.
+*
+* This file contains the list of IVS Analysis Center names, codes
+* and solution codes. The codes are used in file naming conventions 
+* for IVS analysis products.
+*
+* This file is maintained by the IVS Analysis Coordinator. Send 
+* corrections to ivscc@lists.nasa.gov.
+*
+* Last updated:
+* 990514 nrv Initial version
+* 990729 nrv Added "type" field.
+* 000204 nrv Added SPUB code.
+* 000308 nrv Added RA99 codes for all existing ACs and one for FFI.
+* 000313 nrv Add 0001 to list of SPUB solutions. 
+* 000315 nrv Add SHAO to the RA99 list.
+* 000402 nrv Add IAA1, IAA2, IAA3 for IAA's RA99 solutions.
+* 000405 nrv Add BKGT for RA99 solutions.
+* 000619 nrv Add SPBU EOPS code.
+* 001006 nrv Add GSFC code 000a.
+* 001109 nrv Change to 3-letter codes for Analysis Centers, and
+*            5-letter codes for solutions.
+* 001114 nrv Change SPB to SPU (incorrectly modified).
+* 001115 nrv Change IAA solution code to O9907. Add I0011 code
+*            for IAA intensive solution.
+* 001117 nrv Add int01 for GSFC intensive, 2000b for GSFC TRF,
+*            remove 1122.
+* 001120 nrv Add pp2000 code for EOP comparison pilot project.
+* 001206 nrv Add OSO to codes for pilot project.
+* 001206 nrv Add BKG INT01 to solution list.
+* 010104 nrv Add JPL to Pilot Project.
+* 010108 nrv Add IA1 and IA2 to Pilot Project for IAA.
+* 010109 nrv Add DG1 and DG2 to Pilot Project for DGFI.
+* 010112 nrv Add ON2 for Onsala and CGS for Matera
+* 010305 nrv Add gsf2001a and gsfint02 for GSFC.
+* 010309 nrv Add ra00 for IERS 2000 solutions.
+* 010322 nrv Add bkg00002 for EOPS solutions.
+* 010424 nrv Add gsf2001b for EOPS, CRF, TRF for GSFC.
+* 010427 nrv Add iaai0104 for IAA EOPI solution.
+* 010509 nrv Add ivs01001 for the combined EOPS solution.
+* 010604 nrv Add iaao0106 for EOPS series.
+* 010612 nrv Add spu00002 for EOPS and EOPI.
+* 010705 nrv Add pp01 for pilot2001.
+* 010706 nrv Add int03, int04 and 2001c, 2001d for GSFC.
+* 010716 nrv Add aus00001.eops and aus00001.eopi for AUSLIG.
+* 011211 nrv Add bkgint02.eopi and bkg00003.eops for BKG.
+* 011212 nrv Add usn2001d.eops for USNO.
+* 020117 nrv Add iaao0201.eops, iaai0201.eopi for IAA.
+* 020123 nrv Add 2002a and 2002b for BKG.
+* 020329 nrv Add ivs02001 for combined solution.
+* 020408 nrv Add usn2002a.eops for USNO.
+* 020412 nrv Add bkg2002b for CRF solutions for BKG.
+* 020412 nrv Add ra01 for IERS 2001 solutions.
+* 020605 nrv Add 2002b and int05 for GSFC.
+* 020607 nrv Add d0001 for daily sinex (SNX) type for GSFC.
+* 020730 nrv Change daily sinex type to DSNX. 
+* 020806 nrv Add ivs02002 for the new combined EOPS solution.
+* 021001 nrv Add 2002c and int06 for GSFC.
+* 021021 nrv Add codes for CGS Matera.      
+* 021115 nrv Add 2002c for USNO.
+* 021202 nrv Change IVS codes to ivs02r01 and ivs02q03.
+* 030103 nrv Change IVS codes for old/new pole, examples: ivs02r1e and ivs03q1x.
+* 030108 nrv Add OSO to TRO.
+* 030108 nrv Add gsf2003a, gsfint07, gsfd0002 for GSFC.
+* 030113 nrv Add 0301 for IAA.
+* 030114 nrv Add 00004 for BKG EOPS.
+* 030124 nrv Add INT03 for GIUB EOPI.
+* 030203 nrv Add AUS00002.
+* 030303 nrv Add spu0002i.eops IAU1980 and spu0002m.eops for MBH2000.
+* 030316 nrv Add gsf2003b, gsfint08 for GSFC.
+* 030519 nrv Add 2003a EOPS for USNO.
+* 030630 nrv Add 2003c and int09 for GSFC.
+* 030630 nrv Add 2003c, 00005, INT03 for BKG.
+* 030707 nrv Add iaao0307 and iaai0307.
+* 030707 nrv Add AUS2003a for CRF.
+* 030721 nrv Add new codes for IVS.
+* 030821 nrv Add spu0003i.
+* 031008 nrv Add new codes for BKG
+* 031103 nrv Add SNX code for BKG.
+* 031112 nrv Add section for Pilot Project Baselines. Add IAA code.
+* 031112 nrv Add EOPS, CRF, TRF for MAO 2003a and 2003o.
+* 031112 nrv Add AUS codes for 2003b.
+* 031113 nrv Add 2003b EOPS for USNO.
+* 031230 nrv Corrected IAA Pilot Project code to iaao.
+* 040128 nrv Add 2004a for BKG.
+* 040130 nrv Add 00001 code for IGG for baseline PP.
+* 040303 nrv Add usno2004a for USNO for DSNX.
+* 040308 nrv Add 2004a for CGS, also d0001 for their DSNX.
+* 040312 nrv Add 2004a for GSF.
+* 040317 nrv Add 04Q1E 04Q1X 04Q2e 04Q2X 04Q3E 04Q3X 04Q4E 04Q4X for IVS.
+* 040318 nrv Add d0001 for IVS.
+* 040322 nrv Add 2004b and INT10 for GSF.
+* 040412 nrv Remove old solution codes to shorten lines.
+* 040413 nrv Add 2004b for GKB TRF and CRF.
+* 040525 nrv Add IAO for IAA tropospheric submissions from Occam.
+* 040525 nrv Add 2004a for USNO EOPS solution.
+* 040526 nrv Change DSNX code for USNO to d0001.
+* 040602 nrv  Add 00003 for AUS.
+* 040706 nrv Add 2004c for BKG.
+* 040804 nrv Add MAO to TROP.
+* 040823 nrv Add aus2004a for CRF.
+* 040913 nrv Add aus00004 for EOPS.
+* 041012 nrv Add usn2004b for USNO EOPS.
+* 041014 nrv Add gsf2004d for GSFC EOPS, TRF. Add int12 for EOPI.
+* 041021 nrv Add DSNX code for DGFI d0001.
+* 041027 nrv Add O0411 for IAA EOPS and EOPI.
+* 041029 nrv Add 2004e for GSFC.
+* 041213 dbb Add 00007 and INT04 for GIUB-BKG.
+* 041215 dbb Add d0002 for GIUB-BKG daily sinex.
+* 041216 dbb Add long-term troposphere product
+* 050104 dbb Add aus2005a for CRF.
+* 050109 dbb Add gsf2005a and gsfint13 for GSFC.
+* 050111 dbb Add gsf2005b and gsfint14 for GSFC.
+* 050117 dbb Add d04it for IVS daily sinex.
+* 050125 dbb Add 2005a for IAO TRL.
+* 050125 dbb Add 00007 for BKG TRL.
+* 050210 dbb Add 2005a for GSF TRL.
+* 050210 dbb Add DSNX code for DGFI d0002.
+* 050217 dbb Add next ICRF determination project.
+* 050218 dbb Add ts01a and ts02a for DGF for next ICRF project.
+* 050222 dbb Add DSNX code for MAO 05it1.
+* 050222 dbb Add 2005a for MAO TRL.
+* 050224 dbb Add 2005a for BKG TRF and CRF.
+* 050311 dbb Add o0411 code for IAA for baseline PP.
+* 050313 dbb Add ts02a for SHA for next ICRF project.
+* 050314 dbb Add 2005a for USNO EOPS.
+* 050314 dbb Add d04it for USNO DSNX.
+* 050318 dbb Add 2005a for CNR TRL.
+* 050324 dbb Add d04it for SHA DSNX.
+* 050331 dbb Add d04it for GSF DSNX.
+* 050430 dbb Add d04it for AUS DSNX.
+* 050620 dbb Add 05Q2E and 05Q3X for IVS quarterly solutions (EOPS).
+* 050622 dbb Add 2005B for TRF and CRF for BKG.
+* 050630 dbb Add aus2005a for CRF.
+* 050713 dbb Add 2005a for CGS EOPS, TRF, and CRF.
+* 050713 dbb Add usn2005b for USNO EOPS.
+* 050913 dbb Add 05Q3E and 05Q3X for IVS quarterly solutions (EOPS).
+* 050930 dbb Add 2005a for IAA EOPS, BL, and TRL.
+* 051004 dbb Add 2005a for IAA EOPI.
+* 051013 dbb Add aus00005 for EOPS.
+* 051023 dbb Add 2005c and 2005d for GSF EOPS, TRF, and CRF.
+* 051023 dbb Add int15 and int16 for GSF EOPI.
+* 051023 dbb Add d0003 and d0004 for GSF DSNX.
+* 051027 dbb Add usn2005c for USNO EOPS.
+* 051107 dbb Add usn2005c for USNO EOPI.
+* 051111 dbb Add 2005c for BKG TRF and CRF.
+* 051121 dbb Add 2005e for GSF EOPS.
+* 051213 dbb Add 05Q4E and 05Q4X for IVS quarterly solutions (EOPS).
+* 051219 dbb Add aus2005c for CRF.
+* 060206 dbb Add d05it for USNO DSNX.
+* 060301 dbb Add 2006a for IGG long-term troposphere.
+* 060301 dbb Add 2006a for IGG Pilot Project Baselines.
+* 060302 dbb Add 2006a for BKG TRF and CRF.
+* 060306 dbb Add usn2006a for USNO EOPS.
+* 060307 dbb Add usn2006a for USNO EOPI.
+* 060314 dbb Add 06Q1E and 06Q1X for IVS quarterly solutions (EOPS).
+* 060413 dbb Add 2006a for IAA TRF and CRF.
+* 060417 dbb Add aus00006 for EOPS.
+* 060518 dbb Add 2005a for IVS combined long-term troposphere.
+* 060602 dbb Add int17 for GSF EOPI.
+* 060602 dbb Add 2006a, 2006b, 2006c, and 2006d for GSF EOPS and TRF.
+* 060616 dbb Add 06q2e and 06q2X for IVS quarterly solutions (EOPS).
+* 060626 dbb Add M3r1e and M3r1X for IVS quarterly solutions (EOPS).
+* 060626 dbb Add M6Q2e and M6Q2X for IVS quarterly solutions (EOPS).
+* 060627 dbb Add usn2006b for USNO EOPS and EOPI.
+* 060717 dbb Add 2006b for BKG TRF and CRF.
+* 060719 dbb Add 2006b code for IGG for baseline PP.
+* 060906 dbb Add 06q3e, 06q3X, M6q3e, and M6q3X for IVS quarterly
+*            solutions (EOPS).
+* 060928 dbb Add gsfint18 for GSFC EOPI.
+* 061002 dbb Add aus2006b for CRF.
+* 061116 dbb Add usn2006c for USNO EOPS and EOPI.
+* 061117 dbb Add 2006c for BKG TRF and CRF.
+* 061201 dbb Add 06q4e and 07q1e for IVS quarterly solutions (EOPS).
+* 061201 dbb Add 07r1e for IVS combined rapid solutions (EOPS).
+* 061204 dbb Add INT05 for BKG EOPI.
+* 061205 dbb Add 00008 for BKG EOPS.
+* 061206 dbb Add d0003 for BKG DSNX.
+* 061208 dbb Add DSNX code for DGFI d0003.
+* 061220 dbb Add 06q4X, M6q4e and M6q4X for IVS quarterly solutions
+*            (EOPS).
+* 061228 dbb Add 2007a and 2007b for GSF EOPS and GSF TRF.
+* 061228 dbb Add gsfint19 for GSFC EOPI.
+* 070108 dbb Add 2006d for SHA TRF and d0001 for SHA DSNX.
+* 070116 dbb Add 2006a for CGS EOPS, TRF, and CRF.
+* 070116 dbb Add 2007a for IAA EOPS, BL, TRO and TRL.
+* 070116 dbb Add d0001 for IAA DSNX.
+* 070307 dbb Add 2007a for USNO EOPS and EOPI.
+* 070307 dbb Add d07it for USNO DSNX.
+* 070308 dbb Add d0002 for IVS DSNX.
+* 070323 dbb Add gsfint20 for GSFC EOPI.
+* 070323 dbb Add gsf2007c for GSFC TRF and EOPS.
+* 070326 dbb Add DSNX code for DGFI d0004.
+* 070327 dbb Add 2007a for BKG TRF and CRF.
+* 070329 dbb Add 2007a for OPA EOPS, TRF and CRF.
+* 070329 dbb Add 07q2e for IVS quarterly solution for EOPS.
+* 070507 dbb Add 2007b for OPA EOPS.
+* 070511 dbb Add 2007a for AUS CRF.
+* 070518 dbb Add 2007a for IAA TRF and CRF.
+* 070518 dbb Add 2007a for DSNX of IVS, AUS, USN, GSF, IAA, BKG,
+*            CGS, MAO, DGF, SHA.
+* 070522 vth Add int06 for BKG EOPI.
+* 070531 dbb Add 00009 for BKG TRL.
+* 070608 dbb Add 2007c for GSF DSNX.
+* 070615 dbb Add 00009 for BKG EOPS.
+* 070709 dbb Add 00010 for BKG EOPS and TRL; INT07 for BKG EOPI;
+*            and 2007b for BKG DSNX, TRF and CRF.
+* 070709 dbb Add 07q3e for IVS quarterly solution for EOPS.
+* 070713 dbb Add 2007c for OPA EOPS.
+* 070723 dbb Add 2007b for USNO DSNX, EOPS and EOPI.
+* 070724 dbb Add 2007d for GSF EOPS and TRF.
+* 070724 dbb Add int21 and int22 for GSF EOPI.
+* 070814 dbb Add 2007c for GSF DSNI (daily intensive SINEX).
+* 070823 dbb Add 2007c for BKG DSNI (daily intensive SINEX).
+* 071007 dbb Add 07q4e for IVS quarterly solution for EOPS.
+* 071010 dbb Add 2007d for OPA EOPS.
+* 071101 dbb Add 2007c for BKG TRF and CRF.
+* 071107 dbb Add 07r1X for IVS rapid solution for EOPS and
+*                07q1X for IVS quarterly solution for EOPS.
+* 071107 dbb Add 07r4e, 07r4X for IVS rapid solution for EOPS and
+*                07q4X for IVS quarterly solution for EOPS.
+* 071115 dbb Add 2007c for USNO EOPS and EOPI.
+* 071116 dbb Add 2007d for GSF DSNI (daily intensive SINEX).
+* 071116 dbb Add 2007d for GSF DSNX.
+* 071127 dbb Add int22 for GSF DSNI (daily intensive SINEX).
+* 080116 dbb Add 2008a for OPA EOPS.
+* 080122 dbb Add 2008a for OPA DSNX.
+* 080204 dbb Add 2007b for IAA TRF and CRF.
+* 080211 dbb Add 08q1e, 08q1X for IVS quarterly solution for EOPS.
+* 080214 dbb Add aus00007 for EOPS.
+* 080228 dbb Add 2008a for USNO EOPS and EOPI.
+* 080401 dbb Add 2008a for IGG long-term troposphere.
+* 080402 dbb Add 2007a for IAA DSNI (daily intensive SINEX).
+* 080403 dbb Add 2008a for BKG TRF and CRF.
+* 080414 dbb Add 2008b for OPA EOPS and DSNX.
+* 080501 dbb Add 2008a for IAA DSNX and DSNI.
+* 080516 dbb Add 2007a for CGS EOPS, TRF, and CRF.
+* 080520 dbb Add 08q2e, 08q2X for IVS quarterly solution for EOPS.
+* 080604 dbb Add int23 for GSF EOPI and 2008a for GSF EOPS.
+* 080617 dbb Add int23 for GSF DSNI and 2008a for GSF DSNX.
+* 080717 dbb Add 2008b for BKG TRF and CRF.
+* 080725 dbb Add spu00004 for EOPS.
+* 080728 dbb Add 2008c for OPA EOPS and DSNX.
+* 080729 dbb Add 08q3e, 08q3X for IVS quarterly solution for EOPS.
+* 080822 dbb Add 2008a for DGF DSNX.
+* 081016 dbb Add 2008d for OPA EOPS, CRF, and DSNX.
+* 081107 dbb Add 2008a for IAA TRF and CRF.
+* 081121 dbb Add 2008a for BKG DSNX and 00011 for BKG EOPS.
+* 081201 dbb Add 2008c for BKG TRF and CRF.
+* 081201 dbb Add 00011 for BKG TRL.
+* 090105 dbb Add 08q4e, 08q4X for IVS quarterly solution for EOPS.
+* 090113 dbb Add 2009a for DGF DSNX.
+* 090115 dbb Add 2009a for OPA EOPS.
+* 090116 dbb Add 2009a for OPA DSNX.
+* 090503 dbb Add 2009a for BKG TRF, CRF, DSNX, and DSNI.
+* 090503 dbb Add 00012 for BKG EOPS and TRL.
+* 090503 dbb Add INT08 for BKG EOPI.
+* 090503 dbb Add 2009b for OPA EOPS and CRF.
+* 090505 dbb Add 2008a for CGS EOPS, TRF, and CRF.
+* 090518 dbb Add 2009a for INA TRL. (INA is the new 3-letter code used for
+*            the Istituto di Radioastronomia INAF replacing CNR)
+* 090527 dbb Add 2009a for IAA TRF and CRF.
+* 090628 dbb Add 09q2e, 09q2X for IVS quarterly solution for EOPS.
+* 090707 dbb Add DGF to TRO.
+* 090707 dbb Add 2009a for DGF TRL.
+* 090922 dbb Add 09q3e, 09q3X for IVS quarterly solution for EOPS.
+* 090922 dbb Add 2009c for IVS DSNX.
+* 091009 dbb Add INA to TRO.
+* 091026 dbb Add int24 for GSF EOPI and DSNI, and 2009a for GSF EOPS and DSNX.
+* 091124 dbb Add 2009i for OPA EOPI and DSNI.
+* 100115 dbb Add 2010a for OPA EOPS, DSNX, CRF, EOPI, and DSNI.
+* 100115 dbb Add 2010a for IAA EOPS, EOPI, DSNX, DSNI, BL, TRO, and TRL.
+* 100118 dbb Change 2010a to 2010i for OPA EOPI and DSNI.
+* 100125 dbb Add 2010a for AUS CRF.
+* 100203 dbb Add 2010a for USN EOPS and EOPI.
+* 100330 dbb Add 2009a for CGS EOPS, TRF, and CRF.
+* 100504 dbb Add 2010b for OPA EOPS and CRF.
+* 100507 dbb Add 2010a for GSF EOPS and EOXY.
+* 100512 dbb Add 2010a for GSF DSNX.
+* 100521 dbb Add 2010a for GSF EOPI and DSNI.
+* 100630 dbb Add 2010a for DGF DSNI.
+* 100706 dbb Add 2010c for OPA EOPS, DSNX, and CRF.
+* 100901 dbb Add 00013 for BKG EOPS, EOXY, and TRL.
+*            Add INT09 for BKG EOPI.
+*            Add 2010a for BKG DSNX and DSNI.
+* 100929 dbb Add 2010a for PUL EOPI.
+* 101014 dbb Add 2010d for OPA EOPS and CRF.
+* 101109 dbb Add 2010a for BKG TRF and CRF.
+* 110107 dbb Add 2011a for GSI EOPI.
+* 110203 dbb Add 2011a for AUS CRF.
+* 110405 dbb Add 2011b for SHA TRF.
+* 110411 dbb Add 2011b for SHA EOPS.
+* 110413 dbb Add 2011a for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 110420 dbb Add 2011a for OPA EOPS, DSNX, and CRF.
+* 110420 dbb Add 2011i for OPA EOPI and DSNI.
+* 110505 dbb Add 2011a for USN EOPI, EOPS, EOXY.
+* 110517 dbb Add 2011j for OPA EOPI and DSNI.
+* 110624 dbb Add 2011c for SHA EOPS and TRF.
+* 110825 dbb Add 2010a for CGS EOPS, TRF, and CRF.
+* 111005 dbb Add 2011a for BKG TRF and CRF.
+* 111010 dbb Add 2011d for SHA EOPS and TRF.
+* 111110 dbb Add 2011b for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 111201 dbb Add 2011b for AUS CRF.
+* 120209 dbb Add 2012a for GSI EOPI.
+* 120209 dbb Add 2012a for OPA EOPS, DSNX, and CRF.
+* 120209 dbb Add 2012b for OPA EOPS and CRF.
+* 120209 dbb Add int2a for GSI EOPI.
+* 120402 dbb Add 11q4e, 11q4X for IVS quarterly solution for EOPS.
+* 120501 dbb Add 2012a for USN EOPI, EOPS, EOXY, and DSNX.
+* 120604 dbb Add 2012a and 2012b for SHA EOPS and TRF.
+* 120606 dbb Add 2012a for CGS EOPS, TRF, and CRF.
+* 120709 dbb Add 2012a for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 120907 dbb Add 12q1e, 12q1X for IVS quarterly solution for EOPS.
+* 120925 dbb Add 2012a and 2012b for AUS CRF.
+* 120927 dbb Add 2011a and 2012a for IAA TRF and CRF.
+* 121017 dbb Add 2012b for USN EOPI, EOPS, EOXY, and DSNX.
+* 121017 dbb Add 2012a for BKG TRF and CRF.
+* 121119 dbb Add 2012c for SHA EOPS, TRF, and CRF.
+* 130125 dbb Add 12q2e, 12q2X for IVS quarterly solution for EOPS.
+*            Add 12q3e, 12q3X for IVS quarterly solution for EOPS.
+* 130201 dbb Add 2013a for OPA EOPS, DSNX, and CRF.
+* 130328 dbb Add 12q4e, 12q4X for IVS quarterly solution for EOPS.
+* 130403 dbb Add int2b for GSI EOPI.
+* 130502 dbb Add 13q1e, 13q1X for IVS quarterly solution for EOPS.
+* 130802 dbb Add 13q2e, 13q2X for IVS quarterly solution for EOPS.
+* 131025 dbb Add 13q3e, 13q3X for IVS quarterly solution for EOPS.
+* 131108 dbb Add 2013a for BKG TRF and CRF.
+* 131114 dbb Add 2013a for AUS CRF.
+* 131217 dbb Add 2013a for CGS EOPS, TRF, and CRF.
+* 140116 dbb Add ITRF 2013 submission block.
+* 140212 dbb Add 2013a for IAA for the ITRF 2013 submission.
+* 140218 dbb Add 13q4e, 13q4X for IVS quarterly solution for EOPS.
+* 140225 dbb Add 2013a for VIE for the ITRF 2013 submission.
+* 140226 dbb Add 2013a for GFZ for the ITRF 2013 submission.
+* 140401 dbb Add 2013a for AUS for the ITRF 2013 submission.
+* 140421 dbb Add 2014a for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 140428 dbb Add 2013a for SHA for the ITRF 2013 submission.
+* 140516 dbb Add 2014a for USN EOPI, EOPS, EOXY, and DSNX.
+* 140516 dbb Add 2014a for OPA EOPS, DSNX, and CRF.
+* 140516 dbb Add 2014i for OPA EOPI and DSNI.
+* 140522 dbb Add 2013a for OPA for the ITRF 2013 submission.
+* 140528 dbb Add 2014a for AUS CRF.
+* 140605 dbb Add 2014a for USN DSNI.
+* 140605 dbb Add 2014a for IAA TRF and CRF.
+* 140605 dbb Add 2014a for BKG for the ITRF 2013 submission.
+* 140626 dbb Add 2014a for USN for the ITRF 2013 submission.
+* 140703 dbb Add INT14 for BKG EOPI and 2014a for BKG DSNI.
+* 140707 dbb Add 2014a for GFZ DSNX.
+* 140714 dbb Add 2014a for BKG DSNX and 00014 for BKG EOPS, EOXY, and TRL.
+* 140718 dbb Add 14q1e, 14q1X for IVS quarterly solution for EOPS.
+* 140819 dbb Add 2013b for IAA for the ITRF 2013 submission.
+* 141103 dbb Add 14q2e, 14q2X for IVS quarterly solution for EOPS.
+* 141114 dbb Add 2014a for BKG TRF and CRF.
+* 141114 dbb Add 2014a for CGS DSNX.
+* 141204 dbb Add 2014a for NMA for the ITRF 2013 submission.
+* 141210 dbb Add 2014a for VIE long-term troposphere.
+* 141219 dbb Add 2014a for VIE troposphere product.
+* 141223 dbb Add 2014a for CGS EOPS, TRF, and CRF.
+* 150112 dbb Add 2014b for CGS for the ITRF 2013 submission.
+* 150306 dbb Add 2015a for AUS CRF.
+* 150330 dbb Add 2014a for IVS for the ITRF 2013 combined solution.
+* 150430 dbb Add 2015a for USN EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 150504 dbb Add 2015b for AUS CRF.
+* 150610 dbb Add 2015a for OPA EOPS, DSNX, and CRF.
+* 150610 dbb Add 2015i for OPA EOPI and DSNI.
+* 150717 dbb Add 2015x for OPA DSNX.
+* 150917 dbb Add 2015a for USN CRF.
+* 151026 dbb Add 2015c for AUS CRF.
+* 151102 dbb Add 15q2e, 15q2X for IVS quarterly solution for EOPS.
+* 151110 dbb Add 2015a for BKG TRF and CRF.
+* 151123 dbb Add 2015a for SPU EOPS.
+* 151125 dbb Add 2015b for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 151202 dbb Add 2015a for ASI EOPS, TRF, and CRF (ASI is former CGS).
+* 160129 dbb Add 2016a for AUS CRF.
+* 160526 dbb Add 2016b for AUS CRF.
+* 160922 dbb Add 2016a for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 161028 dbb Add 2016a for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 161108 dbb Add 2016a for BKG TRF and CRF.
+* 170103 dbb Add 2016a for ASI EOPS, TRF, and CRF.
+* 170110 dbb Add 2017a for DGF DSNX and DSNI.
+* 170127 dbb Add 2017a for GFZ DSNX.
+* 170208 dbb Add 2017a for IVS DSNX.
+* 170302 dbb Add 2017a for IAA EOPS, EOXY, EOPI, TRF, CRF, DSNX, and DSNI.
+* 170411 dbb Add 2017a for OPA EOPS, DSNX, and CRF.
+* 170411 dbb Add 2017i for OPA EOPI and DSNI.
+* 170419 dbb Add 2017a for AUS CRF.
+* 170510 dbb Add 2017a for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 170512 dbb Add 2017a for ASI DSNX, EOPS, TRF, and CRF.
+* 170831 dbb Add 2017b for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 171002 dbb Add 2017b for AUS CRF.
+* 171114 dbb Add 2017a for BKG TRF and CRF.
+* 171211 dbb Add int2c for GSI EOPI.
+* 171219 dbb Add 14r1X, 14r1e for IVS rapid solution for EOPS.
+* 180116 dbb Add 2018a for OPA EOPS, DSNX, and CRF.
+* 180116 dbb Add 2018i for OPA EOPI and DSNI.
+* 180116 dbb Add 17q3e, 17q3X and 17q4e, 17q4X for IVS quarterly solution for EOPS.
+* 180223 dbb Add 2018a for DGF DSNX and DSNI.
+* 180312 dbb Add 2018a for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 180726 dbb Add 2018a for AUS CRF.
+* 180807 dbb Add 2018b for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 181011 dbb Add 18q2e, 18q2X and 18q3e, 18q3X for IVS quarterly solution for EOPS.
+* 181207 dbb Add 2018a for ASI DSNX, EOPS, TRF, and CRF.
+* 190206 dbb Add 2019a for OPA EOPS, DSNX, and CRF.
+* 190206 dbb Add 2019i for OPA EOPI and DSNI.
+* 190206 dbb Add 2019a for NMA EOPS and DSNX.
+* 190403 dbb Add 2019a for IAA EOPS, EOXY, EOPI, TRF, CRF, DSNX, and DSNI.
+* 190619 dbb Add 2019a for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 190702 dbb Add 2019c for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 190802 dbb Add 2019a for AUS CRF.
+* 190807 dbb Add 18q4e, 18q4X and 19q2e, 19q2X for IVS quarterly solution for EOPS.
+* 190911 dbb Add 2019a for ASI DSNX, EOPS, TRF, and CRF.
+* 191031 dbb Add 2019b for AUS CRF.
+* 191031 dbb Add 19q3e, 19q3X and 19q4e, 19q4X for IVS quarterly solution for EOPS.
+* 191217 dbb Add 2019a for VIE DSNX.
+* 191217 dbb Add 2019d for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 191217 dbb Add 2020a for DGF DSNX and DSNI.
+* 200121 dbb Add 2020a for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 200121 dbb Add 2020a for IGE EOPS and DSNX.
+* 200131 dbb Add 2020a for IVS DSNX.
+* 200219 dbb Add 2019a for GFZ DSNX.
+* 200219 dbb Add 2020a for VIE DSNX.
+* 200414 dbb Add 2020a for AUS CRF.
+* 200414 dbb Add 2020a for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 200527 dbb Add 2020b for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 200624 dbb Add 2020a for BKG DSNX.
+* 200803 dbb Add 2020b for GFZ DSNX.
+* 200811 dbb Add 2020a for BKG EOPI and DSNI.
+* 200820 dbb Add 2020t for OPA DSNX.
+* 200923 dbb Add 2020a for OSO DSNX.
+* 200930 dbb Add 2020a for NMA EOPS and DSNX.
+* 201023 dbb Add 2020a for BKG EOPS and EOXY.
+* 201118 dbb Add 20q2e, 20q2X for IVS quarterly solution for EOPS.
+* 201127 dbb Add 2020a for ASI DSNX, EOPS, TRF, and CRF.
+* 201127 dbb Add 2020a for BKG TRL.
+* 201127 dbb Add 2020b, 2020c for VIE DSNX.
+* 201207 dbb Add 2020b for AUS CRF.
+* 210106 dbb Add 20r1e, 20r1X for IVS rapid solution for EOPS.
+* 210108 dbb Add 2020c for USN DSNX.
+* 210108 dbb Add 2020d for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 210113 dbb Add 2021a for IAA EOPS, EOXY, EOPI, TRF, CRF, DSNX, and DSNI.
+* 210202 dbb Add 2021a for OPA EOPS, DSNX, and CRF.
+* 210202 dbb Add 2021i for OPA EOPI and DSNI.
+* 210414 dbb Add 2021a for VIE DSNX.
+* 210510 dbb Add 2021a for AUS CRF.
+* 210603 dbb Reorganized entries. Removed obsolete blocks (e.g., pilot).
+* 210609 dbb Add 2021b for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 210712 dbb Add 2021a for BKG CRF.
+* 210728 dbb Add 2021a for VIE DSNI.
+* 210820 dbb Add 2019a for GFZ EOXY.
+* 211109 dbb Add 2021a for BKG TRF.
+* 211112 dbb Add 2021b for AUS CRF.
+* 211117 dbb Add 2021c for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 211215 dbb Add 2021a for ASI DSNX, EOPS, TRF, and CRF.
+* 220316 dbb Add 2022a for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 220421 dbb Add 2022a for VIE DSNI, DSNX, EOPI, and EOXY.
+* 220421 dbb Add 21q4e, 21q4X for IVS quarterly solution for EOPS.
+* 220421 dbb Add 2020b, 2021d for IVS combined TRF.
+* 220510 dbb Add 2021d for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 220510 dbb Add 2022a for AUS CRF.
+* 220621 dbb Add 2022a for BKG DSNX.
+* 220621 dbb Add 2022b for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 220822 dbb Add 2022a for GFZ DSNX.
+* 220915 dbb Add 2022a for BKG DSNI, EOPI, EOPS, EOXY, and TRL.
+* 220927 dbb Add 2022a for ASI DSNX, EOPS, EOXY, TRF, and CRF.
+* 221012 mpb Add 2022c for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 221024 dbb Add 2022a for BKG TRF and CRF.
+* 221024 dbb Add 22q3e, 22q3X for IVS quarterly solution for EOPS.
+* 221024 dbb Add 22q4e, 22q4X for IVS quarterly solution for EOPS.
+* 221024 dbb Add 2022c, 2022d for IVS combined TRF.
+* 221117 dbb Add 2022b for VIE DSNI, DSNX, EOPI, and EOXY.
+* 221125 dbb Add 2022b for AUS CRF.
+* 221208 dbb Add 2022d for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 221208 dbb Add 2022a for UAV EOPS and DSNX.
+* 230126 dbb Add 2023a for VIE DSNI, DSNX, EOPI, and EOXY.
+* 230126 dbb Add 2023a for NMA EOPS and DSNX.
+* 230126 dbb Add 2023a for DGF DSNX and DSNI.
+* 230126 dbb Add 2023a for BKG DSNX, DSNI, EOPI, EOPS, EOXY, and TRL.
+* 230213 dbb Add 2023a for IGE EOPS and DSNX.
+* 230213 dbb Add 2023a for GSF EOPS, EOXY, DSNX, EOPI, and DSNI.
+* 230216 dbb Add 2023a for ASI DSNX, EOPS, EOXY, TRF, and CRF.
+* 230222 dbb Add 2023a for OSO DSNX.
+* 230324 dbb Add 2023a for IVS rapid solution for EOPS.
+* 230324 dbb Add 23q1e, 23q1X for IVS quarterly solution for EOPS.
+* 230324 dbb Add 2023a for IVS DSNX.
+* 230324 dbb Add 2023a for IVS combined TRF.
+* 230328 dbb Add 2023a for IVS rapid solution for EOXY.
+* 230424 dbb Add 2023a for USN CRF, EOPI, EOPS, EOXY, DSNI, and DSNX.
+* 230424 dbb Add 2022a for GFZ EOXY.
+* 230424 dbb Add 2023a for OPA EOPS, DSNX, and CRF.
+* 230607 dbb Add 2023a for GSI EOPI.
+*
+* Fields are separated by | characters.
+* Field 1. Analysis Center name, any text.
+* Field 2. 3-letter code, used in file names. Must be exactly
+*          three characters.
+* Field 3. Type, one of CRF, TRF, EOPI, EOPS, SNX.
+* Field 4. Space-delimited list of 5-letter codes for valid solutions 
+*          from this Analysis Center. Submitted analysis products will 
+*          not be accepted without a valid solution description file.
+*          Each solution code must be exactly 5 characters.
+* Document Solution files are not accepted unless the corresponding
+*          documentation file already exists on the Data Center.
+*          Document files have the same file name as the solutions
+*          with .txt appended.
+*
+* ac-name                     | ac-code| type |  ac-solutions
+*
+  IVS Combined Solution       |  IVS   | EOPS | 01001 02001 02002 
+  IVS Combined Rapid Solution |  IVS   | EOPS | 02R01 03R1e 03R1X M3r1e M3r1X
+  IVS Combined Rapid Solution |  IVS   | EOPS | 07r1e 07r1X 07r4e 07r4X 14r1X
+  IVS Combined Rapid Solution |  IVS   | EOPS | 14r1e 20r1e 20r1X 2023a
+  IVS Combined Rapid Solution |  IVS   | EOXY | 2023a
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 02Q03 02Q04 03Q01 03Q1E 03Q1X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 03Q2e 03Q2X 03Q3E 03Q3X 03Q4E
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 03Q4X 04Q1E 04Q1X 04Q2e 04Q2X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 04Q3E 04Q3X 04Q4E 04Q4X 04Q1E
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 04Q1X 04Q2e 04Q2X 04Q3E 04Q3X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 04Q4E 04Q4X 05Q2E 05Q2X 05Q3E
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 05Q3X 05Q4E 05Q4X 05Q2e 05Q2X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 05Q3e 05Q3X 05Q4e 05Q4X 06Q1e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 06Q1X 06q2e 06q2X M6q2e M6q2X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 06q3e 06q3X M6q3e M6q3X 06q4e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 06q4X M6q4e M6q4X 07q1e 07q2e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 07q3e 07q4e 07q1X 07q4X 08q1e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 08q1X 08q2e 08q2X 08q3e 08q3X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 08q4e 08q4X 09q2e 09q2X 09q3e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 09q3X 11q4e 11q4X 12q1e 12q1X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 12q2e 12q2X 12q3e 12q3X 12q4e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 12q4X 13q1e 13q1X 13q2e 13q2X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 13q3e 13q3X 13q4e 13q4X 14q1e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 14q1X 14q2e 14q2X 15q2e 15q2X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 17q3e 17q3X 17q4e 17q4X 18q2e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 18q2X 18q3e 18q3X 18q4e 18q4X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 19q2e 19q2X 19q3e 19q3X 19q4e
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 19q4X 20q2e 20q2X 21q4e 21q4X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 22q3e 22q3X 22q4e 22q4X 23q1X
+  IVS Combined Quarterly Soln |  IVS   | EOPS | 23q1e
+  IVS Combined SINEX          |  IVS   | DSNX | d0001 d04it d0002 2007a 2009c
+  IVS Combined SINEX          |  IVS   | DSNX | 2017a 2020a 2023a
+  IVS Combined TRF            |  IVS   | TRF  | 2020b 2021d 2022c 2022d 2023a
+*
+  Geoscience Australia        |  AUS   | EOPS | 00001 00002 00003 00004 00005
+  Geoscience Australia        |  AUS   | EOPS | 00006 00007
+  Geoscience Australia        |  AUS   | EOPI | 00001
+  Geoscience Australia        |  AUS   | CRF  | 2003b 2004a 2005a 2005b 2005c
+  Geoscience Australia        |  AUS   | CRF  | 2006b 2007a 2010a 2011a 2011b
+  Geoscience Australia        |  AUS   | CRF  | 2012a 2012b 2013a 2014a 2015a
+  Geoscience Australia        |  AUS   | CRF  | 2015b 2015c 2016a 2016b 2017a
+  Geoscience Australia        |  AUS   | CRF  | 2017b 2018a 2019a 2019b 2020a
+  Geoscience Australia        |  AUS   | CRF  | 2020b 2021a 2021b 2022a 2022b
+  Geoscience Australia        |  AUS   | DSNX | d04it 2007a
+*
+  U. S. Naval Observatory     |  USN   | EOPI | 99004 99005 99003 2005c 2006a
+  U. S. Naval Observatory     |  USN   | EOPI | 2006b 2006c 2007a 2007b 2007c
+  U. S. Naval Observatory     |  USN   | EOPI | 2008a 2010a 2011a 2012a 2012b
+  U. S. Naval Observatory     |  USN   | EOPI | 2014a 2015a 2015b 2016a 2017a
+  U. S. Naval Observatory     |  USN   | EOPI | 2017b 2018a 2018b 2019c 2020a
+  U. S. Naval Observatory     |  USN   | EOPI | 2020b 2020d 2021b 2021c 2022a
+  U. S. Naval Observatory     |  USN   | EOPI | 2022b 2022c 2022d 2023a
+  U. S. Naval Observatory     |  USN   | TRF  | 99003
+  U. S. Naval Observatory     |  USN   | EOPS | 2001d 2002a 2002b 2002c 2003a
+  U. S. Naval Observatory     |  USN   | EOPS | 2003b 2004a 2003a 2003b 2004a
+  U. S. Naval Observatory     |  USN   | EOPS | 2004b 2005a 2005b 2005c 2005a
+  U. S. Naval Observatory     |  USN   | EOPS | 2005b 2005c 2006a 2006b 2006c
+  U. S. Naval Observatory     |  USN   | EOPS | 2007a 2007b 2007c 2008a 2010a
+  U. S. Naval Observatory     |  USN   | EOPS | 2011a 2012a 2012b 2014a 2015a
+  U. S. Naval Observatory     |  USN   | EOPS | 2015b 2016a 2017a 2017b 2018a
+  U. S. Naval Observatory     |  USN   | EOPS | 2018b 2019c 2020a 2020b 2020d
+  U. S. Naval Observatory     |  USN   | EOPS | 2021b 2021c 2022a 2022b 2022c
+  U. S. Naval Observatory     |  USN   | EOPS | 2022d 2023a
+  U. S. Naval Observatory     |  USN   | EOXY | 2011a 2012a 2012b 2014a 2015a
+  U. S. Naval Observatory     |  USN   | EOXY | 2015b 2016a 2017a 2017b 2018a
+  U. S. Naval Observatory     |  USN   | EOXY | 2018b 2019c 2020a 2020b 2020d
+  U. S. Naval Observatory     |  USN   | EOXY | 2021b 2021c 2022a 2022b 2022c
+  U. S. Naval Observatory     |  USN   | EOXY | 2022d 2023a
+  U. S. Naval Observatory     |  USN   | DSNX | d0001 d04it d05it d07it 2007a
+  U. S. Naval Observatory     |  USN   | DSNX | 2007b 2012a 2012b 2014a 2014t
+  U. S. Naval Observatory     |  USN   | DSNX | 2015a 2015b 2016a 2017a 2017b
+  U. S. Naval Observatory     |  USN   | DSNX | 2018a 2018b 2019c 2020a 2020b
+  U. S. Naval Observatory     |  USN   | DSNX | 2020c 2020d 2021b 2021c 2022a
+  U. S. Naval Observatory     |  USN   | DSNX | 2022b 2022c 2022d 2023a
+  U. S. Naval Observatory     |  USN   | DSNI | 2014a 2015a 2015b 2016a 2017a
+  U. S. Naval Observatory     |  USN   | DSNI | 2017b 2018a 2018b 2019c 2020a
+  U. S. Naval Observatory     |  USN   | DSNI | 2020b 2020d 2021b 2021c 2022a
+  U. S. Naval Observatory     |  USN   | DSNI | 2022b 2022c 2022d 2023a
+  U. S. Naval Observatory     |  USN   | CRF  | 2015a 2015b 2016a 2017a 2017b
+  U. S. Naval Observatory     |  USN   | CRF  | 2018a 2018b 2019c 2020a 2020b
+  U. S. Naval Observatory     |  USN   | CRF  | 2020d 2021b 2021c 2022a 2022b
+  U. S. Naval Observatory     |  USN   | CRF  | 2022c 2022d 2023a
+*
+  Goddard Space Flight Center |  GSF   | EOPS | 2001c 2001d 2002b 2002c 2003a
+  Goddard Space Flight Center |  GSF   | EOPS | 2003b 2003c 2004a 2004b 2004d
+  Goddard Space Flight Center |  GSF   | EOPS | 2004e 2005a 2005b 2005c 2005d
+  Goddard Space Flight Center |  GSF   | EOPS | 2005e 2006a 2006b 2006c 2006d
+  Goddard Space Flight Center |  GSF   | EOPS | 2007a 2007b 2007c 2007d 2008a
+  Goddard Space Flight Center |  GSF   | EOPS | 2009a 2010a 2011a 2011b 2012a
+  Goddard Space Flight Center |  GSF   | EOPS | 2014a 2016a 2019a 2019d 2020a
+  Goddard Space Flight Center |  GSF   | EOPS | 2021d 2023a
+  Goddard Space Flight Center |  GSF   | EOXY | 2010a 2011a 2011b 2012a 2014a
+  Goddard Space Flight Center |  GSF   | EOXY | 2016a 2019a 2019d 2020a 2021d
+  Goddard Space Flight Center |  GSF   | EOXY | 2023a
+  Goddard Space Flight Center |  GSF   | EOPI | INT03 INT04 INT05 INT06 INT07
+  Goddard Space Flight Center |  GSF   | EOPI | INT08 int09 int10 int12 int13
+  Goddard Space Flight Center |  GSF   | EOPI | int14 int15 int16 int17 int18
+  Goddard Space Flight Center |  GSF   | EOPI | int19 int20 int21 int22 int23
+  Goddard Space Flight Center |  GSF   | EOPI | int24 2010a 2011a 2011b 2012a
+  Goddard Space Flight Center |  GSF   | EOPI | 2014a 2016a 2019a 2019d 2020a
+  Goddard Space Flight Center |  GSF   | EOPI | 2021d 2023a
+  Goddard Space Flight Center |  GSF   | TRF  | 2000b 2001a 2001b 2002c 2003a
+  Goddard Space Flight Center |  GSF   | TRF  | 2003b 2003c 2004a 2004b 2004d
+  Goddard Space Flight Center |  GSF   | TRF  | 2004e 2005a 2005b 2005c 2005d
+  Goddard Space Flight Center |  GSF   | TRF  | 2006a 2006b 2006c 2006d 2007a
+  Goddard Space Flight Center |  GSF   | TRF  | 2007b 2007c 2007d
+  Goddard Space Flight Center |  GSF   | CRF  | 2001b 2002c 2003a 2003b 2003c
+  Goddard Space Flight Center |  GSF   | CRF  | 2005c 2005d
+  Goddard Space Flight Center |  GSF   | DSNX | d0001 d0002 d0003 d0004 d04it
+  Goddard Space Flight Center |  GSF   | DSNX | 2007a 2007c 2007d 2008a 2009a
+  Goddard Space Flight Center |  GSF   | DSNX | 2010a 2011a 2011b 2012a 2014a
+  Goddard Space Flight Center |  GSF   | DSNX | 2016a 2019a 2019d 2020a 2021d
+  Goddard Space Flight Center |  GSF   | DSNX | 2023a
+  Goddard Space Flight Center |  GSF   | DSNI | 2007c 2007d int22 int23 int24
+  Goddard Space Flight Center |  GSF   | DSNI | 2010a 2011a 2011b 2012a 2014a
+  Goddard Space Flight Center |  GSF   | DSNI | 2016a 2019a 2019d 2020a 2021d
+  Goddard Space Flight Center |  GSF   | DSNI | 2023a
+*
+  Inst. of Applied Astronomy  |  IAA   | EOPS | O9907 O0106 O0201 O0301 O0307 
+  Inst. of Applied Astronomy  |  IAA   | EOPS | O0411 2005a 2007a 2010a 2017a
+  Inst. of Applied Astronomy  |  IAA   | EOPS | 2019a 2021a
+  Inst. of Applied Astronomy  |  IAA   | EOPI | I0011 I0104 I0201 I0301 I0307
+  Inst. of Applied Astronomy  |  IAA   | EOPI | I0411 2005a 2010a 2017a 2019a
+  Inst. of Applied Astronomy  |  IAA   | EOPI | 2021a
+  Inst. of Applied Astronomy  |  IAA   | TRF  | 2006a 2007a 2007b 2008a 2009a
+  Inst. of Applied Astronomy  |  IAA   | TRF  | 2011a 2012a 2014a 2017a 2019a
+  Inst. of Applied Astronomy  |  IAA   | TRF  | 2021a
+  Inst. of Applied Astronomy  |  IAA   | CRF  | 2006a 2007a 2007b 2008a 2009a
+  Inst. of Applied Astronomy  |  IAA   | CRF  | 2011a 2012a 2014a 2017a 2019a
+  Inst. of Applied Astronomy  |  IAA   | CRF  | 2021a
+  Inst. of Applied Astronomy  |  IAA   | DSNX | d0001 2007a 2008a 2010a 2017a
+  Inst. of Applied Astronomy  |  IAA   | DSNX | 2019a 2021a
+  Inst. of Applied Astronomy  |  IAA   | DSNI | 2007a 2008a 2010a 2017a 2019a
+  Inst. of Applied Astronomy  |  IAA   | DSNI | 2021a
+*
+  German Federal Agency BKG   |  BKG   | EOPS | 00001 00002 00003 00004 00005
+  German Federal Agency BKG   |  BKG   | EOPS | 00006 00007 00008 00009 00010
+  German Federal Agency BKG   |  BKG   | EOPS | 00011 00012 00013 00014 2020a
+  German Federal Agency BKG   |  BKG   | EOPS | 2022a 2023a
+  German Federal Agency BKG   |  BKG   | EOXY | 00013 00014 2020a 2022a 2023a
+  German Federal Agency BKG   |  BKG   | EOPI | INT01 INT02 00003 INT03 INT04
+  German Federal Agency BKG   |  BKG   | EOPI | INT05 INT06 INT07 INT08 INT09
+  German Federal Agency BKG   |  BKG   | EOPI | INT14 2020a 2022a 2023a
+  German Federal Agency BKG   |  BKG   | TRF  | 2002a 2002b 2003c 2003d 2004a
+  German Federal Agency BKG   |  BKG   | TRF  | 2004b 2004c 2005a 2005b 2005c
+  German Federal Agency BKG   |  BKG   | TRF  | 2006a 2006b 2006c 2007a 2007b
+  German Federal Agency BKG   |  BKG   | TRF  | 2007c 2008a 2008b 2008c 2009a
+  German Federal Agency BKG   |  BKG   | TRF  | 2010a 2011a 2012a 2013a 2014a
+  German Federal Agency BKG   |  BKG   | TRF  | 2015a 2016a 2017a 2021a 2022a
+  German Federal Agency BKG   |  BKG   | CRF  | 2002b 2003c 2003d 2004a 2004b
+  German Federal Agency BKG   |  BKG   | CRF  | 2004c 2005a 2005b 2005c 2006a
+  German Federal Agency BKG   |  BKG   | CRF  | 2006b 2006c 2007a 2007b 2007c
+  German Federal Agency BKG   |  BKG   | CRF  | 2008a 2008b 2008c 2009a 2010a
+  German Federal Agency BKG   |  BKG   | CRF  | 2011a 2012a 2013a 2014a 2015a
+  German Federal Agency BKG   |  BKG   | CRF  | 2016a 2017a 2021a 2022a
+  German Federal Agency BKG   |  BKG   | DSNX | d0001 d0002 d0003 2007a 2007b
+  German Federal Agency BKG   |  BKG   | DSNX | 2008a 2009a 2010a 2014a 2014t
+  German Federal Agency BKG   |  BKG   | DSNX | 2020a 2022a 2023a
+  German Federal Agency BKG   |  BKG   | DSNI | 2007c 2009a 2010a 2014a 2020a
+  German Federal Agency BKG   |  BKG   | DSNI | 2022a 2023a
+*
+  St. Petersburg University   |  SPU   | EOPI | 99001 00001 00002 
+  St. Petersburg University   |  SPU   | EOPS | 00001 00002 0002i 0002m 0003i
+  St. Petersburg University   |  SPU   | EOPS | 00004 2015a
+*
+  Space Geodesy Center Matera |  CGS   | EOPS | 2002a 2004a 2005a 2006a 2007a
+  Space Geodesy Center Matera |  CGS   | EOPS | 2008a 2009a 2010a 2012a 2013a
+  Space Geodesy Center Matera |  CGS   | EOPS | 2014a
+  Space Geodesy Center Matera |  CGS   | TRF  | 2002a 2004a 2005a 2006a 2007a
+  Space Geodesy Center Matera |  CGS   | TRF  | 2008a 2009a 2010a 2012a 2013a
+  Space Geodesy Center Matera |  CGS   | TRF  | 2014a
+  Space Geodesy Center Matera |  CGS   | CRF  | 2002a 2004a 2005a 2006a 2007a
+  Space Geodesy Center Matera |  CGS   | CRF  | 2008a 2009a 2010a 2012a 2013a
+  Space Geodesy Center Matera |  CGS   | CRF  | 2014a
+  Space Geodesy Center Matera |  CGS   | DSNX | d0001 2007a 2014a
+*
+  Italian Space Agency Matera |  ASI   | EOPS | 2015a 2016a 2017a 2018a 2019a
+  Italian Space Agency Matera |  ASI   | EOPS | 2020a 2021a 2022a 2023a
+  Italian Space Agency Matera |  ASI   | EOXY | 2022a 2023a
+  Italian Space Agency Matera |  ASI   | TRF  | 2015a 2016a 2017a 2018a 2019a
+  Italian Space Agency Matera |  ASI   | TRF  | 2020a 2021a 2022a 2023a
+  Italian Space Agency Matera |  ASI   | CRF  | 2015a 2016a 2017a 2018a 2019a
+  Italian Space Agency Matera |  ASI   | CRF  | 2020a 2021a 2022a 2023a
+  Italian Space Agency Matera |  ASI   | DSNX | 2017a 2018a 2019a 2020a 2021a
+  Italian Space Agency Matera |  ASI   | DSNX | 2022a 2023a
+*
+  Main Astronomical Obs, Kiev |  MAO   | EOPS | 2003a 2003o
+  Main Astronomical Obs, Kiev |  MAO   | CRF  | 2003a
+  Main Astronomical Obs, Kiev |  MAO   | TRF  | 2003a
+  Main Astronomical Obs, Kiev |  MAO   | DSNX | 05it1 2007a
+*
+  DGFI                        |  DGF   | DSNX | d0001 d0002 d0003 d0004 2007a
+  DGFI                        |  DGF   | DSNX | 2008a 2009a 2017a 2018a 2020a
+  DGFI                        |  DGF   | DSNX | 2023a
+  DGFI                        |  DGF   | DSNI | 2010a 2017a 2018a 2020a 2023a
+*
+  Shanghai Observatory        |  SHA   | EOPS | 2011b 2011c 2011d 2012a 2012b
+  Shanghai Observatory        |  SHA   | EOPS | 2012c
+  Shanghai Observatory        |  SHA   | TRF  | 2006d 2011b 2011c 2011d 2012a
+  Shanghai Observatory        |  SHA   | TRF  | 2012b 2012c
+  Shanghai Observatory        |  SHA   | TRF  | 2012c
+  Shanghai Observatory        |  SHA   | DSNX | d04it d0001 2007a
+*
+  Paris Observatory           |  OPA   | EOPS | 2007a 2007b 2007c 2007d 2008a
+  Paris Observatory           |  OPA   | EOPS | 2008b 2008c 2008d 2009a 2009b
+  Paris Observatory           |  OPA   | EOPS | 2010a 2010b 2010c 2010d 2011a
+  Paris Observatory           |  OPA   | EOPS | 2012a 2012b 2013a 2014a 2015a
+  Paris Observatory           |  OPA   | EOPS | 2017a 2018a 2019a 2021a 2023a
+  Paris Observatory           |  OPA   | EOPI | 2009i 2010i 2011i 2011j 2014i
+  Paris Observatory           |  OPA   | EOPI | 2015i 2017i 2018i 2019i 2021i
+  Paris Observatory           |  OPA   | CRF  | 2007a 2008d 2009b 2010a 2010b
+  Paris Observatory           |  OPA   | CRF  | 2010c 2010d 2011a 2012a 2012b
+  Paris Observatory           |  OPA   | CRF  | 2013a 2014a 2015a 2017a 2018a
+  Paris Observatory           |  OPA   | CRF  | 2019a 2021a 2023a
+  Paris Observatory           |  OPA   | TRF  | 2007a
+  Paris Observatory           |  OPA   | DSNX | 2008a 2008b 2008c 2008d 2009a
+  Paris Observatory           |  OPA   | DSNX | 2010a 2010c 2011a 2012a 2013a
+  Paris Observatory           |  OPA   | DSNX | 2013t 2014a 2015a 2015x 2017a
+  Paris Observatory           |  OPA   | DSNX | 2018a 2019a 2020t 2021a 2023a
+  Paris Observatory           |  OPA   | DSNI | 2009i 2010i 2011i 2011j 2014i
+  Paris Observatory           |  OPA   | DSNI | 2015i 2017i 2018i 2019i 2021i
+*
+  Pulkovo Observatory         |  PUL   | EOPI | 2010a
+*
+  Geospat. Info. Auth., Japan |  GSI   | EOPI | 2011a 2012a int2a int2b int2c
+  Geospat. Info. Auth., Japan |  GSI   | EOPI | 2023a
+*
+  GFZ Potsdam                 |  GFZ   | DSNX | 2014a 2017a 2019a 2020b 2022a
+  GFZ Potsdam                 |  GFZ   | EOXY | 2019a 2022a
+*
+  Norwegian Mapping Authority |  NMA   | EOPS | 2019a 2020a 2023a
+  Norwegian Mapping Authority |  NMA   | DSNX | 2019a 2020a 2023a
+*
+  TU Vienna                   |  VIE   | DSNX | 2019a 2020a 2020b 2020c 2021a
+  TU Vienna                   |  VIE   | DSNX | 2022a 2022b 2023a
+  TU Vienna                   |  VIE   | DSNI | 2021a 2022a 2022b 2023a
+  TU Vienna                   |  VIE   | EOXY | 2022a 2022b 2023a
+  TU Vienna                   |  VIE   | EOPI | 2022a 2022b 2023a
+*
+  Inst. Geogr. Nat. of Spain  |  IGE   | DSNX | 2020a 2023a
+  Inst. Geogr. Nat. of Spain  |  IGE   | EOPS | 2020a 2023a
+*
+  University of Alicante      |  UAV   | DSNX | 2022a
+  University of Alicante      |  UAV   | EOPS | 2022a
+*
+  Onsala Space Observatory    |  OSO   | DSNX | 2020a 2023a
+
+*
+* The following entries are for the Troposphere Parameters product.
+* File names are of the form aaassssss.tro (aaa=AC code, sssss=session).
+*
+  Inst. of Applied Astronomy  |  IAA   | TRO  | 2007a 2010a
+  Inst. of Applied Astronomy  |  IAO   | TRO  | 
+  Goddard Space Flight Center |  GSF   | TRO  | 
+  Istituto di Radioastronomia |  CNR   | TRO  | 
+  Istituto di Radioastronomia |  INA   | TRO  | 
+  German Federal Agency BKG   |  BKG   | TRO  | 
+  Vienna Analysis Center      |  IGG   | TRO  | 
+  Vienna Analysis Center      |  VIE   | TRO  | 2014a
+  Centro di Geodesia Spaziale |  CGS   | TRO  | 
+  Onsala Space Observatory    |  OSO   | TRO  | 
+  Main Astronomical Obs       |  MAO   | TRO  |
+  DGFI                        |  DGF   | TRO  | 
+
+*
+* The following entries are for the long-term Troposphere Parameters product.
+* File names are of the form aaacccccssssss.trl (aaa=AC code, ccccc=solution
+* code, ssssss=session).
+*
+  IVS Combined Solution       |  IVS   | TRL  | 2005a
+  Inst. of Applied Astronomy  |  IAA   | TRL  | 2005a 2007a 2010a
+  Inst. of Applied Astronomy  |  IAO   | TRL  | 2005a
+  Goddard Space Flight Center |  GSF   | TRL  | 2005a
+  Istituto di Radioastronomia |  CNR   | TRL  | 2005a
+  Istituto di Radioastronomia |  INA   | TRL  | 2009a
+  German Federal Agency BKG   |  BKG   | TRL  | 00007 00009 00010 00011 00012
+  German Federal Agency BKG   |  BKG   | TRL  | 00013 00014 2020a 2022a 2023a
+  Vienna Analysis Center      |  IGG   | TRL  | 2005a 2006a 2008a
+  Vienna Analysis Center      |  VIE   | TRL  | 2014a
+  Centro di Geodesia Spaziale |  CGS   | TRL  | 
+  Onsala Space Observatory    |  OSO   | TRL  | 
+  Main Astronomical Obs       |  MAO   | TRL  | 2005a
+  DGFI                        |  DGF   | TRL  | 2009a
+
+*
+* The following entries are for the IVS contribution to the ITRF 2013.
+* File names are of the form ddddddddd_aaaccccc.sni_itrf2013 and
+* ddddddddd_aaaccccc.snx_itrf2013. The '_itrf2013' part of the suffix
+* is stripped by the submission script; 'snx' are 24-hour sessions and
+* 'sni' are Intensive sessions. (ddddddddd=database name , aaa=AC code, 
+* ccccc=solution code). E.g., 10AUG09XU_gsf2013a.sni_itrf2013 is a
+* submission file for a Goddard Intensive solution.
+*
+  IVS Combined Solution       |  IVS   | DSNX_ITRF2013 | 2014a
+  Geoscience Australia        |  AUS   | DSNX_ITRF2013 | 2013a
+  German Federal Agency BKG   |  BKG   | DSNX_ITRF2013 | 2014a
+  Centro di Geodesia Spaziale |  CGS   | DSNX_ITRF2013 | 2014b
+  GFZ Potsdam                 |  GFZ   | DSNX_ITRF2013 | 2013a
+  Goddard Space Flight Center |  GSF   | DSNX_ITRF2013 | 2013a
+  Goddard Space Flight Center |  GSF   | DSNI_ITRF2013 | 2013a
+  Norwegian Mapping Authority |  NMA   | DSNX_ITRF2013 | 2014a
+  Paris Observatory           |  OPA   | DSNX_ITRF2013 | 2013a
+  Inst. of Applied Astronomy  |  IAA   | DSNX_ITRF2013 | 2013a 2013b
+  Shanghai Observatory        |  SHA   | DSNX_ITRF2013 | 2013a
+  U. S. Naval Observatory     |  USN   | DSNX_ITRF2013 | 2014a
+  Vienna Inst. of Technology  |  VIE   | DSNX_ITRF2013 | 2013a
+
+* The following entry is for the 2000 and 2001 IERS submissions. Any
+* Analysis Center may submit solution files as long as the
+* field "ra00" or "ra01" appears just before the file extension. All
+* submitted files are put into the ivs-iers subdirectory in
+* the IVS data area.
+
+  Analysis Centers                   |       |      | RA00 | ivs-iers
+  Analysis Centers                   |       |      | RA01 | ivs-iers
+
+* The following entry is for the second Pilot Project submissions.
+* Any Analysis Center may submit its solution files to ivsincoming
+* and they will be valid if the field "pp01" appears just before 
+* the file extension. All submitted files are put into the 
+* ivs-pp2001 subdirectory in the IVS data area.
+
+  Analysis Centers                   |       |      | PP01 | ivs-pilot2001

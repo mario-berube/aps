@@ -8,12 +8,11 @@ from collections import defaultdict
 import numpy as np
 from netCDF4 import Dataset
 
-from utils import app, bstr
-from utils.files import TEXTfile
-from utils.utctime import utc, vgosdbTime
-from ivsdb import IVSdata
-from vgosdb.wrapper import Wrapper
-from vgosdb.correlator import CorrelatorReport
+from aps.utils import app, bstr
+from aps.utils.files import TEXTfile
+from aps.utils.utctime import utc, vgosdbTime
+from aps.vgosdb.wrapper import Wrapper
+from aps.vgosdb.correlator import CorrelatorReport
 
 
 get_db_name = re.compile('(?P<name>\d{2}[A-Z]{3}\d{2}[A-Z]{1,2}|\d{8}-[a-z0-9]{1,12}).*$').match
@@ -22,7 +21,7 @@ get_db_name = re.compile('(?P<name>\d{2}[A-Z]{3}\d{2}[A-Z]{1,2}|\d{8}-[a-z0-9]{1
 # Extract year from db_name and join with vgosDB folder and db_name
 def vgosdb_folder(db_name):
     year = db_name[:4] if db_name[:8].isdigit() else datetime.strptime(db_name[0:2], '%y').strftime('%Y')
-    return os.path.join(app.VLBIfolders.vgosdb, year, db_name)
+    return os.path.join(app.folder('VGOSDB_DIR'), year, db_name)
 
 
 # Class to process vgosDB files
@@ -166,11 +165,10 @@ class VGOSdb:
 
     # Read data base to extract session name and type
     def get_session_info(self):
-        url, tunnel = app.get_dbase_info()
-        with IVSdata(url, tunnel) as dbase:
-            if ses_id := dbase.get_db_session_code(self.name):
-                session = dbase.get_session(ses_id)
-                return ses_id, session.type, session.start.strftime('%Y')
+        dbase = app.get_dbase()
+        if ses_id := dbase.get_db_session_code(self.name):
+            session = dbase.get_session(ses_id)
+            return ses_id, session.type, session.start.strftime('%Y')
         return None, VGOSdb.Unknown, None
 
     # List variables
@@ -216,7 +214,7 @@ class VGOSdb:
                 return ''
             name = f'{self.code}.corr'
             self.errors.append('')
-            self.corr.save(os.path.join(app.VLBIfolders.session, self.year, self.code, name))
+            self.corr.save(os.path.join(app.folder('SESSION_DIR'), self.year, self.code, name))
             self.errors.append(f'Correlator report saved in {self.code.upper()}')
             return name
         return ''
@@ -505,7 +503,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser(description='Update web pages')
-    parser.add_argument('-c', '--files', help='adap control file', default='~/.files/adap/vlbi.toml', required=False)
+    parser.add_argument('-c', '--config', help='adap control file', default='~/.config/adap/vlbi.toml', required=False)
     parser.add_argument('-d', '--db', help='database name', default='ivscc', required=False)
     parser.add_argument('db_name', help='vgosDb name')
 

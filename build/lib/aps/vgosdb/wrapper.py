@@ -1,9 +1,10 @@
-from datetime import datetime, timedelta
-from utils.files import TEXTfile
-from pytz import UTC
 import os
 import re
 import sys
+from datetime import datetime, timedelta
+from pytz import UTC
+
+from aps.utils.files import TEXTfile
 
 # Regex to extract information in wrapper
 get_name_version = re.compile(r'(?P<name>.*)_v\d{3}\.nc').match

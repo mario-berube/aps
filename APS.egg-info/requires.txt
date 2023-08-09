@@ -1,1 +1,14 @@
 PyQt5
+sqlalchemy
+sshtunnel
+toml
+numpy
+netCDF4
+google-api-python-client
+oauth2client
+pytz
+beautifulsoup4
+psutil
+
+[:python_version < "3.9"]
+importlib_resources

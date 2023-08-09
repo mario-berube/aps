@@ -2,18 +2,25 @@ from setuptools import setup
 
 setup(
     name='APS',
-    packages=['aps', 'aps.vgosdb', 'aps.schedule', 'aps.utils', 'aps.files'],
+    packages=['aps', 'aps.aps', 'aps.ivsdb', 'aps.vgosdb', 'aps.schedule', 'aps.utils', 'aps.files', 'aps.tools',
+              'aps.schedule'],
     description='Automated Post Solve (APS)',
-    version='2.0',
+    version='1.4.0',
     url='http://github.com/',
     author='Mario',
     author_email='mario.berube@nviinc.com',
     keywords=['vlbi', 'aps'],
-    install_requires=['PyQt5'],
+    install_requires=['PyQt5', 'sqlalchemy', 'sshtunnel', 'toml', 'numpy', 'netCDF4', 'google-api-python-client',
+                      'oauth2client', 'pytz', 'beautifulsoup4', 'psutil',
+                      'importlib_resources; python_version < "3.9"'],
+    package_data={'': ['files/master-format.txt', 'files/ns-codes.txt', 'files/ac-codes.txt', 'files/aps.toml',
+                       'files/servers.toml', 'files/types.json', 'files/eops-format.txt']},
     entry_points={
         'console_scripts': [
-            'aps=aps.__main__:main',
-            'make-config=aps.config:main'
+            'aps=aps.aps.__main__:main',
+            'make-config=aps.make_config:main',
+            'update-db=aps.update_db:main',
+            'make-db=aps.ivsdb.__main__:main'
         ]
     },
 )

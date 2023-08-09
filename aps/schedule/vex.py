@@ -1,7 +1,7 @@
 from collections import OrderedDict, defaultdict
 
-from utils.utctime import utc
-from schedule.skd import SKD
+from aps.utils.utctime import utc
+from aps.schedule.skd import SKD
 
 
 def decode_vex_value(param, row=0, col=0):

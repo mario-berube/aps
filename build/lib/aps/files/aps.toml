@@ -1,0 +1,97 @@
+
+# Control files for APS application
+# Title line for report and Qt application
+[Title]
+GAL = "Update global arc-list"
+VMF = "Make VMF troposphere file"
+BAW = "Update baseline-dependent weights"
+STW = "Update site-dependent weights"
+EOPS = "Make EOPS solution for IVS submission"
+SIMUL24 = "Make EOPS solution for IVS submission (FE replaced by RMS)"
+EOPM = "Make Multi-EOP solution for IVS submission"
+SIMUL = "Make Multi-EOP solution for IVS submission (FE replaced by RMS)"
+STANDALONE = "Make a standalone solution and keep listings"
+EOPK = "Update EOPK time series"
+SNR = "Make SNR analysis"
+
+SUBMIT-DB = "Database"
+SUBMIT-SINEX = "Sinex"
+SUBMIT-EOPS = "EOPS"
+SUBMIT-EOXY = "EOPXY"
+SUBMIT-EOPI = "Multi-EOP"
+
+
+# List of possible actions for intensive sessions
+[[Intensive.Action]]
+GAL = true
+[[Intensive.Action]]
+BAW = true
+[[Intensive.Action]]
+STANDALONE = true
+[[Intensive.Action]]
+EOPM = "is_not_vgos"
+[[Intensive.Action]]
+SIMUL = "is_vgos"
+
+# List of possible submissions for intensive sessions
+[[Intensive.Submit]]
+SUBMIT-DB = "check_agency" # Check master schedule if NASA should submit
+[[Intensive.Submit]]
+SUBMIT-EOPI = true
+[[Intensive.Submit]]
+SUBMIT-SINEX = true
+
+# List of possible actions for standard sessions
+[[Standard.Action]]
+GAL = true
+[[Standard.Action]]
+VMF = true
+[[Standard.Action]]
+BAW = true
+[[Standard.Action]]
+STW = true
+[[Standard.Action]]
+STANDALONE = true
+[[Standard.Action]]
+EOPS = "is_not_vgos"
+#[[Standard.Action]]
+#SIMUL24 = "is_vgos"
+[[Standard.Action]]
+EOPK = true
+[[Standard.Action]]
+SNR = true
+
+# List of possible submissions for standard sessions
+[[Standard.Submit]]
+SUBMIT-DB = "check_agency" # Check master schedule if NASA should submit
+[[Standard.Submit]]
+SUBMIT-EOPS = "check_date" # Submit if not too old
+[[Standard.Submit]]
+SUBMIT-EOXY = "check_date" # Submit if not too old
+[[Standard.Submit]]
+SUBMIT-SINEX = true
+
+# List of possible actions for VGOS sessions
+[[VGOS.Action]]
+GAL = true
+[[VGOS.Action]]
+VMF = true
+[[VGOS.Action]]
+BAW = true
+[[VGOS.Action]]
+STW = true
+[[VGOS.Action]]
+STANDALONE = true
+[[VGOS.Action]]
+EOPS = true
+[[VGOS.Action]]
+EOPK = true
+[[VGOS.Action]]
+SNR = true
+
+# List of possible submissions for VGOS sessions
+[[VGOS.Submit]]
+SUBMIT-DB = "check_agency" # Check master schedule if NASA should submit
+
+
+

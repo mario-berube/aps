@@ -1,3 +1,5 @@
 [console_scripts]
-aps = aps.__main__:main
-make-config = aps.config:main
+aps = aps.aps.__main__:main
+make-config = aps.make_config:main
+make-db = aps.ivsdb.__main__:main
+update-db = aps.update_db:main

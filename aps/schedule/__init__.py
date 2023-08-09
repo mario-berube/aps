@@ -1,5 +1,5 @@
-from schedule.skd import SKD
-from schedule.vex import VEX
+from aps.schedule.skd import SKD
+from aps.schedule.vex import VEX
 from collections import OrderedDict
 
 
