@@ -6,8 +6,8 @@ setup(
               'aps.schedule'],
     description='Automated Post Solve (APS)',
     version='1.4.0',
-    url='http://github.com/',
-    author='Mario',
+    url='https://github.com/mario-berube/aps.git',
+    author='Mario Berube NVI',
     author_email='mario.berube@nviinc.com',
     keywords=['vlbi', 'aps'],
     install_requires=['PyQt5', 'sqlalchemy', 'sshtunnel', 'toml', 'numpy', 'netCDF4', 'google-api-python-client',
@@ -17,10 +17,7 @@ setup(
                        'files/servers.toml', 'files/types.json', 'files/eops-format.txt']},
     entry_points={
         'console_scripts': [
-            'aps=aps.aps.__main__:main',
-            'make-config=aps.make_config:main',
-            'update-db=aps.update_db:main',
-            'make-db=aps.ivsdb.__main__:main'
+            'aps=aps.aps.__main__:main'
         ]
     },
 )

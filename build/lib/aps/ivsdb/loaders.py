@@ -19,7 +19,6 @@ def load_master_format(dbase, path, notify=False):
         return
     classes = {'SKED CODES': OperationsCenter, 'CORR CODES': Correlator, 'SUBM CODES': AnalysisCenter}
     record = dbase.get_or_create(MasterFile, code=path.name)
-    print(path.name, record.updated, datetime.fromtimestamp(path.stat().st_mtime))
     if record.updated and record.updated >= datetime.fromtimestamp(path.stat().st_mtime):
         return True
 
@@ -54,7 +53,6 @@ def load_ns_codes(dbase, path, notify=False):
             app.notify('DB not updated', f'{path.name} does not exists or empty!')
             return
         record = dbase.get_or_create(MasterFile, code=path.name)
-        print(path.name, record.updated, datetime.fromtimestamp(path.stat().st_mtime))
         if record.updated and record.updated >= datetime.fromtimestamp(path.stat().st_mtime):
             return True
         with open(path, 'r') as file:

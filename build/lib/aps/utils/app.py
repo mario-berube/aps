@@ -107,7 +107,6 @@ def test_environment():
 
 
 def get_hidden_file(name):
-    print(Path(files('aps').joinpath(f'files/{name}')))
     return Path(files('aps').joinpath(f'files/{name}'))
 
 

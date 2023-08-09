@@ -503,8 +503,10 @@ def batch_proc(arguments):
             if actions[0] == 'ALL':
                 actions = [name for (name, item) in aps.processing.Actions.items() if item['required']]
             for action in aps.processing.Actions.keys():
+                print(f'try {action}')
                 if action in actions:
                     if aps.run_process(action, initials):
+                        print(f'{action} done')
                         aps.processing.done(action)
                     else:
                         print(aps.errors)
