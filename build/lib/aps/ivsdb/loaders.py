@@ -2,18 +2,13 @@ import re
 import os
 import traceback
 import json
-try:
-    from importlib.resources import files
-except:
-    from importlib_resources import files
-
-from datetime import datetime, timedelta
+from datetime import datetime
 from pathlib import Path
 
 from aps.ivsdb.models import OperationsCenter, Correlator, AnalysisCenter, Station, Session, SessionStation, MasterFile
 from aps.utils import utctime, app, to_float
 
-ivs_types = json.load(files('aps').joinpath('files/types.json').open())
+ivs_types = json.load(app.get_hidden_file('types.json').open())
 ivs_types = {ses_id.upper(): ses_type.upper() for ses_type, sessions in ivs_types.items() for ses_id in sessions}
 
 
@@ -24,6 +19,7 @@ def load_master_format(dbase, path, notify=False):
         return
     classes = {'SKED CODES': OperationsCenter, 'CORR CODES': Correlator, 'SUBM CODES': AnalysisCenter}
     record = dbase.get_or_create(MasterFile, code=path.name)
+    print(path.name, record.updated, datetime.fromtimestamp(path.stat().st_mtime))
     if record.updated and record.updated >= datetime.fromtimestamp(path.stat().st_mtime):
         return True
 
@@ -58,6 +54,7 @@ def load_ns_codes(dbase, path, notify=False):
             app.notify('DB not updated', f'{path.name} does not exists or empty!')
             return
         record = dbase.get_or_create(MasterFile, code=path.name)
+        print(path.name, record.updated, datetime.fromtimestamp(path.stat().st_mtime))
         if record.updated and record.updated >= datetime.fromtimestamp(path.stat().st_mtime):
             return True
         with open(path, 'r') as file:

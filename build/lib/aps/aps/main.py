@@ -86,7 +86,7 @@ class QAPS(APS, QMainWindow):
             self.extract_corr_notes()
         self.processing_initials = self.appInfo.get('initials', ['', ''])[int(self.is_intensive)]
         self.box_for_initials = TextBox(self.processing_initials, readonly=False, min_size='WW')
-        self.NASA, self.IVS = QRadioButton(self.ac_code), QRadioButton("IVS")
+        self.AC, self.IVS = QRadioButton(self.ac_code), QRadioButton("IVS")
         self.sendMail = QCheckBox("Send mail to ivs-analysis")
 
         # Initialize viewers for specific files and comment editors
@@ -278,9 +278,9 @@ class QAPS(APS, QMainWindow):
         report_viewer = AnalysisReport(self)
         box.addWidget(report_viewer.button, 4, 1)
         box.addWidget(report_viewer.submitButton, 4, 2)
-        is_ivs = self.analysis_center == 'NASA'
-        self.NASA.setChecked(not is_ivs)
-        box.addWidget(self.NASA, 4, 3)
+        is_ivs = self.analysis_center == self.ac_code
+        self.AC.setChecked(not is_ivs)
+        box.addWidget(self.AC, 4, 3)
         self.IVS.setChecked(is_ivs)
         box.addWidget(self.IVS, 4, 4)
         self.sendMail.setChecked(self.appInfo.get('sendMail', self.appInfo.get('send_mail', False)))
@@ -298,8 +298,8 @@ class QAPS(APS, QMainWindow):
         report_viewer = AnalysisReportEditor(self)
         box.addWidget(report_viewer.button , 2, 1)
         is_ivs = self.analysis_center == self.ac_code
-        self.NASA.setChecked(not is_ivs)
-        box.addWidget(self.NASA, 2, 2)
+        self.AC.setChecked(not is_ivs)
+        box.addWidget(self.AC, 2, 2)
         self.IVS.setChecked(is_ivs)
         box.addWidget(self.IVS, 2, 3)
 

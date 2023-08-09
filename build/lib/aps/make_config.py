@@ -37,8 +37,8 @@ class Config(QMainWindow):
 
         if path:
             path = Path(path)
-        elif not (path := Path(Path.cwd(), 'aps.conf')).exists():
-            path = Path(Path.home(), 'aps.conf')
+        elif not (path := Path(Path.home(), 'aps.conf')).exists():
+            path = Path(Path.cwd(), 'aps.conf')
         self.path = path
         self.options = toml.load(self.path.open()) if self.path.exists() else {name: '' for name in self.names}
 
