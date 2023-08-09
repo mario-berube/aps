@@ -14,8 +14,8 @@ except:
 args = None
 
 env_vars = {'VGOSDB_DIR': 'vgosDB files Folder', 'SESSION_DIR': 'Session files Folder',
-            'MASTER_DIR': 'Master files Folder', 'CALC_APRIORI_DIR': 'Folder containing Leap Seconds file ut1ls.dat',
-            'MODEL_DIR': 'Folder containing glo.sit file', 'WORK_DIR': 'Folder containing Solve output',
+            'MASTER_DIR': 'Master files Folder',
+            'WORK_DIR': 'Folder containing Solve output',
             'SPOOL_DIR': 'Folder containing spool files',
             'CALC_APRIORI_DIR': 'Folder containing lead seconds file (ut1ls.dat)'}
 

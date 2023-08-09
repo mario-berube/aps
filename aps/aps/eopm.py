@@ -52,7 +52,8 @@ class EOPM(EOP):
                                        f' Unknown station or bug?')
                         return False
                     stations.append(sta_name)
-                if stats['used'] >= min_nbr_used_obs and self.min_dist == 0 or math.dist(self.sites[names[0]], self.sites[names[1]]) > self.min_dist:
+                if stats['used'] >= min_nbr_used_obs and self.min_dist == 0 or \
+                        math.dist(self.sites[names[0]], self.sites[names[1]]) > self.min_dist:
                     baselines.append(name)
 
         # Remove duplicates
@@ -107,7 +108,7 @@ class EOPM(EOP):
     def execute(self, session, vgosdb):
         baselines, stations = self.get_baselines(session, vgosdb)
         if not baselines:
-            return False
+            return True  # Nothing to do
         wrapper, arc_lines = vgosdb.wrapper.name, []
         if not self.get_opa_code('EOPM_ONLY_SINGLE_BASELINE') == 'YES':
             arc_lines.append(self.format_arc_line(wrapper, session.code))
