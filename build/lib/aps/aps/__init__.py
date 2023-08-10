@@ -461,8 +461,9 @@ def print_report(arguments):
 
 def batch_submit(arguments):
 
-    codes = [code for code in arguments.submit if code in ("SINEX", "DB", "EOPS", "EOPI", "EOPXY", "ALL")]
-    sessions = [code for code in arguments.submit if code not in ("SINEX", "DB", "EOPS", "EOPI", "EOPXY", "ALL")]
+    accepted = {"SINEX", "DB", "EOPS", "EOPI", "EOXY", "ALL"}
+    codes = [code for code in arguments.submit if code in accepted]
+    sessions = [code for code in arguments.submit if code not in accepted]
     if select.select([sys.stdin], [], [], 0)[0]:
         sessions = list(filter(None, [name.strip() for name in sys.stdin.readlines()]))
 
@@ -503,7 +504,6 @@ def batch_proc(arguments):
             if actions[0] == 'ALL':
                 actions = [name for (name, item) in aps.processing.Actions.items() if item['required']]
             for action in aps.processing.Actions.keys():
-                print(f'try {action}')
                 if action in actions:
                     if aps.run_process(action, initials):
                         print(f'{action} done')
