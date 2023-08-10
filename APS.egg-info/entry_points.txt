@@ -1,2 +1,3 @@
 [console_scripts]
 aps = aps.aps.__main__:main
+make-config = aps.make_config:main
