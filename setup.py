@@ -17,7 +17,8 @@ setup(
                        'files/servers.toml', 'files/types.json', 'files/eops-format.txt']},
     entry_points={
         'console_scripts': [
-            'aps=aps.aps.__main__:main'
+            'aps=aps.aps.__main__:main',
+            'make-config:make_config:ma'
         ]
     },
 )

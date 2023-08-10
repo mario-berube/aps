@@ -67,7 +67,6 @@ class APS:
             self.opa_lcl = app.args.opa_config
         else:  # Use default control file for session type
             self.opa_lcl = app.opa_int if self.session.type == 'intensive' else app.opa_std
-        print('opa_lcl', app.opa_int, app.opa_std, self.opa_lcl)
         # Read vgosDB file
         self.vgosdb = VGOSdb(self.session.db_folder)
         if not self.vgosdb.is_valid():
@@ -506,7 +505,6 @@ def batch_proc(arguments):
             for action in aps.processing.Actions.keys():
                 if action in actions:
                     if aps.run_process(action, initials):
-                        print(f'{action} done')
                         aps.processing.done(action)
                     else:
                         print(aps.errors)
