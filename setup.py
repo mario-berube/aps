@@ -18,7 +18,7 @@ setup(
     entry_points={
         'console_scripts': [
             'aps=aps.aps.__main__:main',
-            'make-config=aps.aps.make_config:main'
+            'make-config=aps.make_config:main'
         ]
     },
 )
