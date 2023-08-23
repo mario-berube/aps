@@ -5,7 +5,7 @@ setup(
     packages=['aps', 'aps.aps', 'aps.ivsdb', 'aps.vgosdb', 'aps.schedule', 'aps.utils', 'aps.files', 'aps.tools',
               'aps.schedule'],
     description='Automated Post Solve (APS)',
-    version='1.4.0',
+    version='1.4.1',
     url='https://github.com/mario-berube/aps.git',
     author='Mario Berube NVI',
     author_email='mario.berube@nviinc.com',

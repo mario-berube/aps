@@ -48,7 +48,7 @@ class APS:
                 return
         # Extract session from working directory
         elif not self.get_session(Path().cwd().name):
-            self.add_error('Could not find session or db_name')
+            self.add_error(f'Could not find session or db_name. aps param was {param}')
             self.add_error('')
             self.add_error('1 - Move to session or vgosdb folder or')
             self.add_error('2 - Input session name, db_name or initials as parameter')
@@ -63,7 +63,7 @@ class APS:
         self.db_name = self.session.db_name
         # Get OPA config file from arguments or used default.
         if app.args.opa_config and Path(getattr(app.args, 'opa_config')).exists():
-            print('from input', app.args.opa_config, Path(getattr(app.args, 'opa_config')))
+            logger.info(f'opa_config using {app.args.opa_config}')
             self.opa_lcl = app.args.opa_config
         else:  # Use default control file for session type
             self.opa_lcl = app.opa_int if self.session.type == 'intensive' else app.opa_std
@@ -124,6 +124,7 @@ class APS:
     def check_initials(self, initials):
         if not (spool_file := read_spool(initials=initials.upper(), read_unused=True)):
             return False
+        logger.info(f'using SPLF{initials.upper()}')
         # Extract db_name from spool file
         self.spool = spool_file
         try:

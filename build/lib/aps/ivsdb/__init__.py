@@ -113,8 +113,9 @@ class IVSdata:
     # Get a VLBI session using the session code
     def get_session(self, code, create=False):
         if create:
-            return self.get_or_create(models.Session, code=code)
-        return self.get(models.Session, code=code)
+            return self.get_or_create(models.Session, code=code.casefold())
+
+        return self.get(models.Session, code=code.casefold())
 
     # Get session code using the db_name
     def get_db_session_code(self, db_name):
@@ -125,7 +126,7 @@ class IVSdata:
         if found := is_vgosDBnameOld(db_name):
             date = datetime.strptime(found['date'], '%y%b%d').strftime('%Y-%m-%d%%')
             return ans[0] if (ans := self.orm_ses.query(models.Session.code).filter(
-                and_(models.Session.start.like(date), models.Session.corr_db_code == found['db_code'])
+                and_(models.Session.start.like(date), models.Session.corr_db_code == found['db_code'].casefold())
             ).first()) else None
         else:
             return None

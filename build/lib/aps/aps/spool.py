@@ -438,6 +438,7 @@ def read_spool(path=None, initials='', db_name='', read_unused=False):
         path = Path(app.folder('SPOOL_DIR'), f'SPLF{initials}') if initials \
             else get_stored_spool(db_name) if db_name else None
     if path and path.exists():
+
         with Spool(path) as spool:
             if spool.read_global_section():
                 spool.read_sections()

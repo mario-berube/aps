@@ -66,8 +66,8 @@ def main():
         parser.add_argument('-e', '--email_report', help='', required=False)
         parser.add_argument('-b', '--batch', help='procedure to execute in batch mode', nargs='+', required=False)
         parser.add_argument('-S', '--submit', help='procedure to execute in batch mode', nargs='+', required=False)
-        parser.add_argument('-editor', help='', action='store_true', required=False)
-        parser.add_argument('-notes', help='', action='store_true', required=False)
+        parser.add_argument('-editor', help='toggle editor view', action='store_true', required=False)
+        parser.add_argument('-notes', help='toggle correlator note usage', action='store_true', required=False)
         parser.add_argument('param', help='initials or session or db_name', default='', nargs='?')
 
         args = test_init(parser.parse_args())
@@ -86,7 +86,6 @@ def main():
                 batch_submit(args)
             else:
                 qaps = QAPS(args.param)
-                print('before exec')
                 qaps.exec()
 
 
