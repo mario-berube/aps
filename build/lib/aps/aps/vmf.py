@@ -15,13 +15,13 @@ class VMF(APSprocess):
 
     # Execute VMF application for apriori type (TOTAL or DRY)
     def create_vmf_file(self, apriori, out_dir, vgosdb):
-        if out_dir == 'NO':
+        if not out_dir:
             return
         folder = Path(out_dir.split()[0].strip())
         folder.mkdir(exist_ok=True)
         cmd = [self.vmf_exec, vgosdb.wrapper.name]
         if self.vmf_exec == 'vmf3_2_trp':
-            out_file = Path(folder, vgosdb.year, vgosdb.name + '.trp')
+            out_file = Path(folder, vgosdb.year if 'YEAR' in out_dir else '', f"{vgosdb.name}.trp")
             cmd.extend([str(out_file),  self.vmf_dir, apriori])
         else:
             cmd.extend([cmd.append(f'VMF_DIR_OUT={str(folder)}'), f'VMF_APRIORI={apriori}'])
