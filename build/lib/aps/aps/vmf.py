@@ -12,7 +12,6 @@ class VMF(APSprocess):
         self.vmf_exec = self.get_app_path('VMF_PROGRAM')
         # Get INPUT_VMF_DIR
         self.vmf_dir = self.get_opa_directory('VMF_DATA_DIR')
-        self.create_vmf_file = self.create_vmf3 if self.vmf_exec == 'vmmf3_t_trp' else self.create_vmf
 
     # Execute VMF application for apriori type (TOTAL or DRY)
     def create_vmf_file(self, apriori, out_dir, vgosdb):
