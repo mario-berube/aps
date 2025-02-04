@@ -1,8 +1,26 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.2
 Name: APS
-Version: 1.4.1
+Version: 1.4.2
 Summary: Automated Post Solve (APS)
 Home-page: https://github.com/mario-berube/aps.git
 Author: Mario Berube NVI
 Author-email: mario.berube@nviinc.com
 Keywords: vlbi,aps
+Requires-Dist: PyQt5
+Requires-Dist: sqlalchemy
+Requires-Dist: sshtunnel
+Requires-Dist: toml
+Requires-Dist: numpy
+Requires-Dist: netCDF4
+Requires-Dist: google-api-python-client
+Requires-Dist: oauth2client
+Requires-Dist: pytz
+Requires-Dist: beautifulsoup4
+Requires-Dist: psutil
+Requires-Dist: importlib_resources; python_version < "3.9"
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: requires-dist
+Dynamic: summary
