@@ -12,17 +12,22 @@ class VMF(APSprocess):
         self.vmf_exec = self.get_app_path('VMF_PROGRAM')
         # Get INPUT_VMF_DIR
         self.vmf_dir = self.get_opa_directory('VMF_DATA_DIR')
+        self.create_vmf_file = self.create_vmf3 if self.vmf_exec == 'vmmf3_t_trp' else self.create_vmf
 
     # Execute VMF application for apriori type (TOTAL or DRY)
     def create_vmf_file(self, apriori, out_dir, vgosdb):
-        # Create command for vmf application
-        cmd = [self.vmf_exec,  vgosdb.wrapper.name, f'VMF_APRIORI={apriori}']
+        if out_dir == 'NO':
+            return
+        folder = Path(out_dir.split()[0].strip())
+        folder.mkdir(exist_ok=True)
+        cmd = [self.vmf_exec, vgosdb.wrapper.name]
+        if self.vmf_exec == 'vmf3_2_trp':
+            out_file = Path(folder, vgosdb.year, vgosdb.name + '.trp')
+            cmd.extend([str(out_file),  self.vmf_dir, apriori])
+        else:
+            cmd.extend([cmd.append(f'VMF_DIR_OUT={str(folder)}'), f'VMF_APRIORI={apriori}'])
 
-        # Extract folder name. Create it if missing
-        if out_dir and out_dir != 'NO':
-            folder = Path(out_dir.split()[0].strip())
-            folder.mkdir(exist_ok=True)
-            cmd.append(f'VMF_DIR_OUT={str(folder)}')
+        # Exec command for vmf application
         ans = self.execute_command(' '.join(cmd), vgosdb.name)
         if not ans or not ans[-1].strip().startswith('Made') or not Path(ans[-1].split()[-1]).exists():
             path = self.save_bad_solution('vmf_', ans)
