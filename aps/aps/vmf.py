@@ -20,13 +20,13 @@ class VMF(APSprocess):
         folder = Path(out_dir.split()[0].strip())
         folder.mkdir(exist_ok=True)
         cmd = [self.vmf_exec, vgosdb.wrapper.name]
-        if self.vmf_exec == 'vmf3_2_trp':
+        if self.vmf_exec == 'vmf_2_trp':
+            cmd.extend([f'VMF_DIR_OUT={str(folder)}', f'VMF_APRIORI={apriori}'])
+        else:
             folder = Path(folder, vgosdb.year) if 'YEAR' in out_dir else folder
             folder.mkdir(exist_ok=True)
             out_file = Path(folder, f"{vgosdb.name}.trp")
             cmd.extend([str(out_file),  self.vmf_dir, apriori])
-        else:
-            cmd.extend([cmd.append(f'VMF_DIR_OUT={str(folder)}'), f'VMF_APRIORI={apriori}'])
 
         # Exec command for vmf application
         ans = self.execute_command(' '.join(cmd), vgosdb.name)
